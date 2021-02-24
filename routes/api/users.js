@@ -4,6 +4,8 @@ const {check, validationResult} = require('express-validator');
 const User = require('../../models/User');
 const gravatar = require('gravatar'); 
 const bcrypt = require('bcryptjs'); 
+const jwt = require('jsonwebtoken');
+const config = require('config'); 
 
 
 // @route POST api/users
@@ -58,7 +60,23 @@ router.post('/',
             await user.save(); 
 
             // return jsonwebtoken 
-            res.send('User registered');
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            }
+         
+            // returns a token with a jwt header, payload and signature that authenticates user requests 
+            jwt.sign(
+                payload, 
+                config.get('jwtSecret'),
+                // change to 3600(1 hour) in production
+                {expiresIn: 360000}, 
+                (err, token) => {
+                    if(err) throw err;
+                    res.json({token})
+                }
+            )
 
         } catch(err) {
             // logs to stderr: blocking synchronous writable stream intended for error messages
