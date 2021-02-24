@@ -1,5 +1,2 @@
 node_modules/
-config/defaults.json
-keys.js
-
-
+config/default.json

@@ -1,5 +1,5 @@
 const express = require('express');
-// const connectDB = require('./config/db'); 
+const connectDB = require('./config/db'); 
 // creates an express application  
 const app = express(); 
 // const users = require('./routes/api/users'); 
@@ -7,7 +7,7 @@ const app = express();
 // const posts = require('./routes/api/posts');
 // const profile = require('./routes/api/profile'). 
 // Connect Database 
-// connectDB(); 
+connectDB(); 
 
 app.get('/', (req, res) => res.send('API Running'));
 
