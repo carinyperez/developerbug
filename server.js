@@ -9,6 +9,10 @@ const profile = require('./routes/api/profile');
 // Connect Database 
 connectDB(); 
 
+// Init Middleware for body parser 
+//parses json and only looks at requests where the Content-Type header matches the type option
+app.use(express.json({extended: false}))
+
 app.get('/', (req, res) => res.send('API Running'));
 
 // Define routes 
