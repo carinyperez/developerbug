@@ -78,7 +78,6 @@ const updatedProfile = profile.experience.splice(removeIndexOf, 1);
 console.log(updatedProfile);
 console.log(profile); 
 
-
 //.indexOf(req.params.exp_id);
 // { exp_id: '603814337cefdd9943945767' }
 
