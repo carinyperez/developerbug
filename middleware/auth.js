@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 
 // middleware functions have access to the req, res and next functions, when done will call next function with next() 
-// this middleware function authenticates token 
+// this middleware 
 const auth = (req, res, next) =>  {
     // Get token from the header 
     const token = req.header('x-auth-token'); 
