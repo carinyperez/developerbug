@@ -1,0 +1,14 @@
+import React, {Fragment} from 'react'; 
+import './App.css';
+import Homepage from './pages/homepage/homepage.component';
+
+
+const App = () =>  {
+  return (
+    <Fragment>
+      <Homepage/>
+    </Fragment>
+  );
+}
+
+export default App;

@@ -1,12 +1,15 @@
 {
-  "name": "devconnector",
+  "name": "developerbug",
   "version": "1.0.0",
-  "description": "Social network for developers ",
+  "description": "Social network for developers to learn languages ",
   "main": "server.js",
   "scripts": {
     "start": "node server",
     "server": "nodemon server",
-    "debug": "node --inspect server.js"
+    "debug": "node --inspect server.js",
+    "client-install": "npm install --prefix client",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -33,3 +36,5 @@
     "nodemon": "^2.0.7"
   }
 }
+
+

@@ -1,0 +1,25 @@
+.homepage {
+  display: flex;
+  flex-wrap: wrap;
+  background: linear-gradient(45deg, #7a1036, #ff7ebe, #f5d0e2);
+  width: 100vw;
+  height: 100vh;
+
+  img {
+    width: 20vw;
+    border-radius: 10px;
+    margin: auto;
+  }
+  .break,
+  .break1 {
+    flex-basis: 100%;
+  }
+  .break1 {
+    border-bottom: 1px solid black;
+    margin: 10px;
+  }
+  .sloth {
+    width: 20vw;
+    padding-top: 20px;
+  }
+}
