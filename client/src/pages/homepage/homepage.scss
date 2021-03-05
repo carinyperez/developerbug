@@ -1,12 +1,18 @@
 .homepage {
   display: flex;
   flex-wrap: wrap;
-  background: linear-gradient(45deg, #7a1036, #ff7ebe, #f5d0e2);
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
+  background: linear-gradient(45deg, #ffefba, #ffffff);
 
+  h2 {
+    margin: auto;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 160%;
+  }
   img {
-    width: 20vw;
+    width: 10vw;
     border-radius: 10px;
     margin: auto;
   }
@@ -14,12 +20,7 @@
   .break1 {
     flex-basis: 100%;
   }
-  .break1 {
-    border-bottom: 1px solid black;
-    margin: 10px;
-  }
   .sloth {
-    width: 20vw;
-    padding-top: 20px;
+    width: 25vw;
   }
 }

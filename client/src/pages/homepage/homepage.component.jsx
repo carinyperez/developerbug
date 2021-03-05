@@ -13,14 +13,14 @@ import './homepage.scss';
 const Homepage = () => {
     return (
         <div className='homepage'>
-            <h1 className='title'>Developer Bug</h1>
-            <div className='break1'></div>
-            <img className='python' src={python}></img>
-            <img className='js' src={js}></img>
-            <img className='c' src={c}></img>
-            <img className='java' src={java}></img>
+            <h2>Practice speaking new programming languages <br/> by connecting to other developers near you</h2>
             <div className='break'></div>
-            <img className='sloth' src={owl}></img>
+            <img className='python' src={python} alt='python logo'></img>
+            <img className='js' src={js} alt='js logo'></img>
+            <img className='c' src={c} alt='c logo'></img>
+            <img className='java' src={java} alt='java logo'></img>
+            <div className='break'></div>
+            <img className='sloth' src={owl} alt='owl logo'></img>
         </div>
     )
 }
