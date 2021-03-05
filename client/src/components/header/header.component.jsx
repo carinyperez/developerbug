@@ -10,7 +10,7 @@ const Header = () => {
                 <Link to='/' className='title'>DeveloperBug</Link>
                 <Link to='/developers'>Developers</Link>
                 <Link to='/signup'>Sign Up</Link>
-                <Link to='/signup'>Log In</Link>
+                <Link to='/login'>Log In</Link>
             </div>
             <div>
                 <div className='break-header'></div>

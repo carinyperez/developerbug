@@ -2,9 +2,12 @@ import React, {useState} from 'react'
 import './signup.styles.scss';
 import profile from '../../assets/user.png'
 import {Link} from 'react-router-dom'; 
+import {connect} from 'react-redux'; 
+import { setAlert } from '../../redux/reducers/alert/alert.actions';
 
 
-const SignUp = () => {
+
+const SignUp = (props) => {
     // use state hook 
     const [formData, setFormData] = useState({
         name: '', 
@@ -14,7 +17,6 @@ const SignUp = () => {
     }); 
 
     const {name, email, password, password2} = formData; 
-    console.log(formData);
 
     const handleChange = (event) => {
         // console.log(event.target.name); 
@@ -22,18 +24,17 @@ const SignUp = () => {
         setFormData({...formData, [event.target.name]: event.target.value}); 
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault(); 
         if(password !== password2) {
-            console.log('Passwords do not match')
-        } else{ 
-            console.log(formData);
+            props.setAlert('Passwords do not match', 'danger'); 
+        } else { 
+            console.log('Success');
         }
     }
-
     return (
         <div className='signup-container'>
-            <h1>SignUp</h1>
+            <h1>Sign Up</h1>
             <div className='signup-header'>
                     <img src={profile} alt='profile'></img>
                     <h2>Create your account</h2>
@@ -72,4 +73,14 @@ const SignUp = () => {
     )
 }
 
-export default SignUp; 
+
+
+const mapDispatchToProps = dispatch => ({
+    // action creator object will be merged into the component's props
+    // dispatch is used with user actions  
+    setAlert: (msg, alertType) => dispatch(setAlert(msg, alertType))
+}); 
+
+
+// export default connect(null, {setAlert})(SignUp);
+export default connect(null, mapDispatchToProps)(SignUp); 

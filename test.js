@@ -1,5 +1,31 @@
-const array = [ '6036c20b98b3245a0c3aecee', '112', '1234']; 
-const removeIndex = array.indexOf('112');
+// Set the current day of the week to a variable, with 1 being Monday and 7 being Sunday
+const day = 5;
+console.log(day);
 
-console.log(array.splice(removeIndex, 1)); 
+switch (day) {
+    case 1:
+        console.log("Happy Monday!");
+        break;
+    case 2:
+        console.log("It's Tuesday. You got this!");
+        break;
+    case 3:
+        console.log("Hump day already!");
+        break;
+    case 4:
+        console.log("Just one more day 'til the weekend!");
+        break;
+    case 5:
+        console.log("Happy Friday!");
+        break;
+    case 6:
+        console.log("Have a wonderful Saturday!");
+        break;
+    case 7:
+        console.log("It's Sunday, time to relax!");
+        break;
+    default:
+        console.log("Something went horribly wrong...");
+}
+
 

@@ -5,9 +5,13 @@ import Homepage from './pages/homepage/homepage.component';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
 import Login from './components/login/login.component';
 import SignUp from './components/signup/signup.component';
+//The <Provider /> makes the Redux store available to any nested components that have been wrapped in the connect() function
+import {Provider} from 'react-redux'; 
+import store from './redux/store'
 
 const App = () =>  {
   return (
+    <Provider store={store}>
     <Router>
       <div className='app-page'>
         <Header/>
@@ -18,7 +22,7 @@ const App = () =>  {
         </Switch>
       </div>
     </Router>
-    
+    </Provider>
   );
 }
 
