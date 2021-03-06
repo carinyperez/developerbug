@@ -42,8 +42,8 @@ router.post('/',
             const avatar = gravatar.url(email, {
                 s:'200',
                 r: 'pg',
-                d: 'mm' 
-                // d: 'robohash'
+                // d: 'mm' 
+                d: 'robohash'
             })
 
             // if no user create a new one and save to mongoDB 
