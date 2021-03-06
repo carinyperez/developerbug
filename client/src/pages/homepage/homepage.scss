@@ -2,14 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   width: 100vw;
-  height: 90vh;
-  background: linear-gradient(45deg, #ffefba, #ffffff);
-
+  height: 100vh;
   h2 {
+    color: white;
     margin: auto;
-    font-weight: normal;
     font-size: 24px;
     line-height: 160%;
+    margin-bottom: 20px;
+    margin-top: 20px;
   }
   img {
     width: 10vw;

@@ -2,7 +2,13 @@
   text-align: center;
 }
 
-
+.app-page {
+  background-image: linear-gradient(
+    to top,
+    rgb(251, 194, 235) 0%,
+    rgb(166, 193, 238) 100%
+  );
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
