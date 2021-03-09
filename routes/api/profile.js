@@ -7,9 +7,6 @@ const {check, ValidationResult, validationResult} = require('express-validator')
 const request = require('request'); 
 const config = require('config'); 
 
-
-
-
 // @route GET api/profile/me
 // @ desc Get current users profile  
 // @ access Private

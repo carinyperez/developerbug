@@ -7,8 +7,6 @@ const {check, validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken');
 const config = require('config'); 
 
-
-
 // @route    GET api/auth
 // @desc     Get user by token
 // @access   Private
@@ -30,7 +28,6 @@ router.get('/', auth, async(req, res) => {
 // @ desc Authenticate user & get token 
 // @ access Public 
 router.post('/',
-
     // validation 
     [ 
         // email must be a valid email 
@@ -45,7 +42,6 @@ router.post('/',
             return res.status(400).json({errors: errors.array()})
         }
         const {email, password} = req.body; 
-
         try {
             // see if user exists in mongoDB database, will return null if none found  
             let user = await User.findOne({email});
@@ -53,22 +49,18 @@ router.post('/',
             if(!user) {
                 return res.status(400).json({errors: [{msg: 'Invalid credentials'}]})
             }
-
             const isMatch = await bcrypt.compare(password, user.password)
-
             if(!isMatch) {
                 return res
                 .status(400)
                 .json({errors: [{msg: 'Invalid credentials'}]})
             }
-
             // return jsonwebtoken 
             const payload = {
                 user: {
                     id: user.id
                 }
             }
-         
             // returns a token with a jwt header, payload and signature that authenticates user requests 
             jwt.sign(
                 payload, 
@@ -80,12 +72,10 @@ router.post('/',
                     res.json({token})
                 }
             )
-
         } catch(err) {
             console.error(err.message); 
             res.status(500).send('Server error'); 
         }
 });
-
 module.exports = router; 
 

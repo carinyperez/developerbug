@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
 import './login.styles.scss';
-import profile from '../../assets/user.png'
-import {Link} from 'react-router-dom'; 
+import {Link, Redirect} from 'react-router-dom'; 
+import {connect} from 'react-redux'; 
+import PropTypes from 'prop-types'; 
+import { login } from '../../redux/reducers/auth/auth.actions';
 
-const Login = () => {
+
+const Login = ({login, isAuthenticated}) => {
     // use state hook 
     const [formData, setFormData] = useState({
         email: '', 
@@ -22,17 +25,21 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault(); 
         console.log('Success');
+        login(email, password); 
+    }
+
+    // Redirect if logged in 
+    if(isAuthenticated) {
+        return <Redirect to='/dashboard'/>
     }
 
     return (
         <div className='login-container'>
-            <h1>Log In</h1>
-            <div className='login-header'>
-                    <img src={profile} alt='profile'></img>
-                    <h2>Sign into your account</h2>
-            </div>
+            <h1>Welcome back</h1>
             <div className='login'>
+
                 <form className='form' onSubmit={event => handleSubmit(event)}>
+                    <h2>Login</h2>
                     <input type='text' placeholder='Email'
                     name='email' 
                     value={email}
@@ -53,5 +60,16 @@ const Login = () => {
     )
 }
 
-export default Login; 
+// proptypes check the argumnet passed, the prop must be a function 
+Login.propTypes = {
+    login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
+}
+
+// brings in the current state from the redux store 
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, {login})(Login); 
 

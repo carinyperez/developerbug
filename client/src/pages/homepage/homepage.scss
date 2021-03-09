@@ -1,26 +1,37 @@
 .homepage {
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   width: 100vw;
   height: 100vh;
-  h2 {
-    color: white;
-    margin: auto;
-    font-size: 24px;
-    line-height: 160%;
-    margin-bottom: 20px;
-    margin-top: 20px;
+
+  .header {
+    margin: 100px;
+    h2 {
+      color: white;
+      margin: auto;
+      font-size: 24px;
+      line-height: 200%;
+      margin: 20px;
+      width: 20vw;
+    }
   }
-  img {
-    width: 10vw;
-    border-radius: 10px;
-    margin: auto;
+
+  .images {
+    width: 80vw;
+    margin: 100px;
+    img {
+      width: 10vw;
+      border-radius: 10px;
+      margin: auto;
+    }
+    .break {
+      flex-basis: 100%;
+    }
+    .owl {
+      width: 30vw;
+    }
   }
-  .break,
-  .break1 {
+  .break {
     flex-basis: 100%;
-  }
-  .sloth {
-    width: 25vw;
   }
 }

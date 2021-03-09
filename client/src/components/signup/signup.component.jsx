@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './signup.styles.scss';
-import {Link} from 'react-router-dom'; 
+import {Link, Redirect} from 'react-router-dom'; 
 import {connect} from 'react-redux'; 
 import { setAlert } from '../../redux/reducers/alert/alert.actions';
 import PropTypes from 'prop-types'; 
@@ -8,7 +8,7 @@ import avatar from '../../assets/avatar.png'
 import Alert from '../alert/alert';
 import { signup } from '../../redux/reducers/auth/auth.actions';
 
-const SignUp = ({setAlert, signup}) => {
+const SignUp = ({setAlert, signup, isAuthenticated}) => {
     // use state hook 
     const [formData, setFormData] = useState({
         name: '', 
@@ -34,6 +34,11 @@ const SignUp = ({setAlert, signup}) => {
             signup({name, email, password});
         }
     }
+
+    if(isAuthenticated) {
+        return <Redirect to='/dashboard'/>
+    }
+
     return (
         <div className='signup-container'>
             <h1>Create your account</h1>
@@ -82,8 +87,13 @@ const SignUp = ({setAlert, signup}) => {
 // data validation
 SignUp.propTypes = {
     setAlert: PropTypes.func.isRequired,
-    signup: PropTypes.func.isRequired
+    signup: PropTypes.func.isRequired, 
+    isAuthenticated: PropTypes.bool
 }
 
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
 // export default connect(null, {setAlert})(SignUp);
-export default connect(null, {setAlert, signup})(SignUp); 
+export default connect(mapStateToProps, {setAlert, signup})(SignUp); 

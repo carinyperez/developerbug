@@ -1,43 +1,39 @@
 .login-container {
-  padding-left: 50px;
+  text-align: center;
+  margin: auto;
+  height: 100vh;
 
   h1 {
-    margin-bottom: 30px;
-    color: #337fff;
-    font-weight: lighter;
+    color: white;
   }
 
-  .login-header {
-    img {
-      width: 20px;
-      height: 20px;
-      float: left;
-      padding-right: 10px;
-    }
-    h2 {
-      margin-bottom: 30px;
-      font-family: lighter;
-      font-size: 20px;
-    }
-  }
   .login {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin: auto;
     .form {
+      background-color: white;
       display: flex;
       flex-direction: column;
-      width: 80vw;
+      width: 40vw;
 
+      h2 {
+        text-align: left;
+        margin-bottom: 50px;
+        margin-left: 20px;
+      }
       input {
-        margin-bottom: 30px;
+        margin: 0px 20px;
+        margin-bottom: 50px;
         font-size: 24px;
       }
       .sign-in-input {
-        width: 20vw;
         color: white;
         background: #337fff;
         border: none;
         border-radius: 20px;
+        text-align: center;
       }
     }
   }
