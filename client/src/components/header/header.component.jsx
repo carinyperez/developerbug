@@ -5,25 +5,23 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../redux/reducers/auth/auth.actions';
 
-const Header = ({auth: {isAuthenticated, loading}}, logout) => {
+const Header = (props) => {
+    const {isAuthenticated} = props.auth; 
+    const {loading} = props.auth; 
+    const {logout} = props;
+    console.log(isAuthenticated);
 
-    console.log(isAuthenticated); // true 
-    console.log(loading); // false 
-
-    const handleClick = (e) => {
-        e.preventDefault();
-        logout(); 
-    }
+    // auth true and loading false 
     if(!loading && isAuthenticated) {
-        console.log('logout'); 
         return (
         <div className='header-container'>
             <div className='header'>
                 <Link to='/' className='title'>DeveloperBug</Link>
-            </div> 
-            <div className='header'>
                 <Link to='/developers'>Developers</Link>
-                <a onClick={this.handleClick()} href='/logout'>Logout</a>
+                <a onClick={() => logout()} href='/dashboard' >Logout</a>
+            </div>
+            <div>
+                <div className='break-header'></div>
             </div>
         </div>
         )     
@@ -31,9 +29,7 @@ const Header = ({auth: {isAuthenticated, loading}}, logout) => {
         return (
             <div className='header-container'>
             <div className='header'>
-            <Link to='/' className='title'>DeveloperBug</Link>
-            </div> 
-            <div className='header'>
+                <Link to='/' className='title'>DeveloperBug</Link>
                 <Link to='/signup'>Sign Up</Link>
                 <Link to='/login'>Log In</Link>
             </div>
@@ -55,6 +51,8 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, {logout})(Header); 
+
+
 
 
 
