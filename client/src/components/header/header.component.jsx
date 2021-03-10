@@ -9,7 +9,7 @@ const Header = (props) => {
     const {isAuthenticated} = props.auth; 
     const {loading} = props.auth; 
     const {logout} = props;
-    console.log(isAuthenticated);
+    // console.log(isAuthenticated);
 
     // auth true and loading false 
     if(!loading && isAuthenticated) {
@@ -18,7 +18,7 @@ const Header = (props) => {
             <div className='header'>
                 <Link to='/' className='title'>DeveloperBug</Link>
                 <Link to='/developers'>Developers</Link>
-                <a onClick={() => logout()} href='/dashboard' >Logout</a>
+                <a onClick={() => logout()} href='/' >Logout</a>
             </div>
             <div>
                 <div className='break-header'></div>

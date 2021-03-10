@@ -15,7 +15,7 @@ router.get('/me', auth, async (req, res) =>  {
     try {
       // we have access to user.id because we are using auth 
       const profile = await (await Profile.findOne({user: req.user.id}));
-      
+      console.log(profile); 
       //.populate('user', ['name', 'avatar']); 
 
       if (!profile) {
@@ -163,7 +163,6 @@ router.delete('/',auth, async (req, res) => {
         res.json({msg: 'User deleted'}); 
         
     } catch (err) {
-        console.log(err); 
         console.error(err.message);
         res.status(500).send('Server Error')   
     }

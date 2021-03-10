@@ -14,7 +14,6 @@ export const loadUser = () => async dispatch => {
     // hit up our endpoint to signup a user using our backend auth route 
     try {
         const res = await axios.get('/api/auth'); 
-        console.log(res); 
         dispatch({
             type: AuthActionTypes.USER_LOADED,
             payload: res.data
@@ -48,7 +47,6 @@ export const signup = ({name, email, password}) => async dispatch => {
     } catch (err) {
         //{name: "", email: "", password: ""}
         const errors = err.response.data.errors; 
-        console.log(errors); 
         if(errors) {
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
         }
