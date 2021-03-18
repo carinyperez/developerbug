@@ -1,0 +1,13 @@
+.dashboard-container {
+  height: 100vh;
+  margin: 30px;
+  .dashboard-links {
+    display: flex;
+    flex-direction: row;
+    a {
+      margin-right: 50px;
+      text-decoration: none;
+      color: black;
+    }
+  }
+}

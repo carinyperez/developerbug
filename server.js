@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db'); 
+
 // creates an express application  
 const app = express(); 
 const users = require('./routes/api/users'); 

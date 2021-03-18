@@ -1,14 +1,37 @@
-const localStorage = {
-    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7I…zE3fQ.itpRfN0SUFa8-8cgDEWVFFeT76auZsSYH05ONAc02lQ"
-}
+// const { exit } = require('process');
+// const readline = require('readline');
+
+// const reader = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// })
+
+// class Game {
+//     constructor() {
+//         this.towers=[[3,2,1], [], []]
+//     }
+//     promptMove(reader, callback) {
+//         reader.question("What's the start index?",start => { 
+//             callback(start)
+//             reader.question("What's the end index?",end => {
+//                 ; 
+//             callback(end)
+//             reader.close(); 
+//             })
+//         })
+//     }   
+// }
+
+// // callback function 
+// function printIndex(index) {
+//    const towerIdx = parseInt(index); 
+//    console.log(towerIdx); 
+// }
+
+// const game = new Game();
+// game.promptMove(reader, printIndex);
 
 
-const loadUsers = () => () => {   
-    console.log({ type: 'LOAD_USERS_LOADING' })
-};
-
-
-loadUsers()(); 
 
 
 
@@ -17,4 +40,16 @@ loadUsers()();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+console.log(["html", "css", "js"].join(',')); 
 
