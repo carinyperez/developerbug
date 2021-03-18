@@ -16,15 +16,12 @@ const SignUp = ({setAlert, signup, isAuthenticated}) => {
         password: '',
         password2: ''
     }); 
-
     const {name, email, password, password2} = formData; 
-
     const handleChange = (event) => {
         // console.log(event.target.name); 
         // console.log(event.target.value); 
         setFormData({...formData, [event.target.name]: event.target.value}); 
     }
-
     const handleSubmit = async (event) => {
         event.preventDefault(); 
         if(password !== password2) {
@@ -34,11 +31,9 @@ const SignUp = ({setAlert, signup, isAuthenticated}) => {
             signup({name, email, password});
         }
     }
-
     if(isAuthenticated) {
         return <Redirect to='/dashboard'/>
     }
-
     return (
         <div className='signup-container'>
             <h1>Create your account</h1>

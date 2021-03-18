@@ -18,7 +18,8 @@ const Header = (props) => {
             <div className='header'>
                 <Link to='/' className='title'>DeveloperBug</Link>
                 <Link to='/developers'>Developers</Link>
-                <a onClick={() => logout()} href='/' >Logout</a>
+                <Link to='/dashboard'>Dashboard</Link>
+                <Link onClick={() => logout()} to='/' >Logout</Link>
             </div>
             <div>
                 <div className='break-header'></div>

@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+import {connect} from 'react-redux'; 
+import PropTypes from 'prop-types'; 
+import {Redirect} from 'react-router-dom'; 
 import owl from '../../assets/owl.png'
 import './homepage.scss'; 
 import java from '../../assets/java.png'
@@ -10,7 +13,10 @@ import './homepage.scss';
 import c from '../../assets/c.png'
 import './homepage.scss'; 
 
-const Homepage = () => {
+const Homepage = ({isAuthenticated}) => {
+    if(isAuthenticated) {
+        return <Redirect to='/dashboard'/>
+    }
     return (
         <div className='homepage'>
             <div className='header'>
@@ -28,4 +34,14 @@ const Homepage = () => {
         </div>
     )
 }
-export default Homepage; 
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
+Homepage.propTypes = { 
+    isAuthenticated: PropTypes.bool
+}
+
+
+export default connect(mapStateToProps)(Homepage); 

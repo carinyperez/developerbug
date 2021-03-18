@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth'); 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
-const {check, ValidationResult, validationResult} = require('express-validator'); 
+const {check,validationResult} = require('express-validator'); 
 const request = require('request'); 
 const config = require('config'); 
 
@@ -32,28 +32,25 @@ router.get('/me', auth, async (req, res) =>  {
 // @route POST api/profile
 // @ desc Create or update user profile 
 // @ access Private
-router.post('/', [auth, 
-    // validation 
-    [
-        check('status', 'Status is required').not().isEmpty(),
-        check('skills', 'Skills is required').not().isEmpty()
-    ]
-]
-, 
-    async (req, res) => {
-        console.log(req.body); 
-        // validation errors 
-        const errors = validationResult(req); 
-        if(!errors.isEmpty) {
-            return res.status(400).json({errors: errors.array()})
-        }
+router.post(
+  '/',
+  auth,
+  check('occupation', 'Occupation is required').notEmpty(),
+  check('skills', 'Skills is required').notEmpty(),
+  async (req, res) => {
+    const errors = validationResult(req);
+    console.log(errors); 
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    
 
         const {
             company,
             website, 
             location, 
             bio, 
-            status,
+            occupation,
             githubusername,
             skills, 
             youtube, 
@@ -321,6 +318,5 @@ router.get('/github/:username', (req, res)=> {
         
     }
 })
-
 
 module.exports = router; 
