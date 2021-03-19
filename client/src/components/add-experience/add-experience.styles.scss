@@ -1,0 +1,58 @@
+.experience-container {
+  padding-bottom: 50px;
+  h1 {
+    text-align: center;
+  }
+  .experience {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+    .form {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      width: 50vw;
+      .experience-header {
+        img {
+          margin-top: 20px;
+          width: 200px;
+          height: 200px;
+          float: center;
+          padding-right: 10px;
+        }
+        h2 {
+          margin-bottom: 30px;
+          font-family: lighter;
+          font-size: 20px;
+        }
+      }
+      input,
+      textarea {
+        margin: 20px 30px;
+        font-size: 24px;
+        text-align: left;
+      }
+      label {
+        margin: 0px 30px;
+        font-size: 24px;
+        text-align: left;
+        input {
+          margin: 10px 0px;
+        }
+      }
+      .experience-input {
+        width: 13vw;
+        color: white;
+        background: #337fff;
+        border: none;
+        border-radius: 40px;
+        margin: auto;
+        padding: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+    }
+  }
+}

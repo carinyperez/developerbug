@@ -12,9 +12,9 @@ const Dashboard = ({getCurrentProfile, auth, profile}) => {
     // if component did mount call function 
     useEffect(() => {
         getCurrentProfile(); 
-    }, [])
+    }, [getCurrentProfile])
     return (
-        profile.loading && profile.profile == null ? <Spinner/> : 
+         profile.loading && profile.profile == null ? <Spinner/> : 
         <div className='dashboard-container'>
             {/* If user exists display name*/}
             <p>
