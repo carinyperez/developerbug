@@ -11,7 +11,6 @@ import './edit-profile.styles.scss';
 import { createProfile,getCurrentProfile} from '../../redux/reducers/profile/profile.actions';
 import PropTypes from 'prop-types';
 
-
 const EditProfile = ({profile : {profile, loading}, createProfile,getCurrentProfile, history}) => {  
     const [formData, setFormData] = useState({
         company:'',
@@ -27,7 +26,6 @@ const EditProfile = ({profile : {profile, loading}, createProfile,getCurrentProf
         youtube: '',
         instagram: ''
     }); 
-
     // destructure fields from FormData
     const {
         company,
@@ -43,13 +41,11 @@ const EditProfile = ({profile : {profile, loading}, createProfile,getCurrentProf
         youtube,
         instagram
     } = formData; 
-
     const [selected, setSelected] = useState(false);
     // passing empty array as second element makes in run on mount and unmount otherwise runs everytime component updates 
     useEffect(() => {
         getCurrentProfile(); 
         // fill in the form with the current formData 
-
         setFormData({
             // if loading or no company in profile set to null 
             company: loading || !profile.company ? '': profile.company, 
@@ -83,13 +79,13 @@ const EditProfile = ({profile : {profile, loading}, createProfile,getCurrentProf
 
     }
     return (
-        <div className='profile-container'>
-            <h1>Create your profile</h1>
-            <div className='profile'>
-                <form className='profile-form'
+        <div className='edit-profile-container'>
+            <h1>Edit your profile</h1>
+            <div className='edit-profile'>
+                <form className='edit-profile-form'
                 onSubmit={handleSubmit}
                 >
-                    <div className='profile-header'>
+                    <div className='edit-profile-header'>
                         <img src={cat} alt='cat'></img>
                         <h2>Fill out your info</h2>
                     </div>

@@ -9,7 +9,7 @@ import instagram1 from '../../assets/instagram.png';
 import youtube1 from '../../assets/youtube.png';  
 import './profile.styles.scss';
 import {createProfile } from '../../redux/reducers/profile/profile.actions';
-import Alert from '../../components/alert/alert.js'; 
+import Alert from '../../components/alert/alert.component'; 
 import PropTypes from 'prop-types';
 
 const Profile = ({createProfile, history}) => {  

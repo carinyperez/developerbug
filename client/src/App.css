@@ -3,6 +3,8 @@
 }
 
 .app-page {
+  padding-bottom: 100px;
+  overflow: hidden;
   background-image: linear-gradient(
     to top,
     rgb(251, 194, 235) 0%,

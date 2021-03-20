@@ -51,5 +51,8 @@
 
 
 
-console.log(["html", "css", "js"].join(',')); 
+// console.log(["html", "css", "js"].join(',')); 
 
+
+var text = 'daslkdaskldj.asdasdasd';
+console.log(text.split('.')[0]);

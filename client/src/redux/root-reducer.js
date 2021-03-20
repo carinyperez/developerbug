@@ -4,7 +4,6 @@ import authReducer from './reducers/auth/auth.reducer';
 import profileReducer from './reducers/profile/profile.reducer';
 
 
-
 export default combineReducers({
     alert: alertReducer, 
     auth: authReducer, 

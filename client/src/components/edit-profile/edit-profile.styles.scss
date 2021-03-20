@@ -1,0 +1,59 @@
+.edit-profile-container {
+  text-align: center;
+
+  h1 {
+    color: white;
+  }
+
+  .edit-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+
+    .edit-profile-form {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      width: 50vw;
+      .edit-profile-header {
+        img {
+          width: 200px;
+          height: 200px;
+          float: center;
+          padding-right: 10px;
+        }
+        h2 {
+          margin-bottom: 30px;
+          font-family: lighter;
+          font-size: 20px;
+        }
+      }
+
+      input,
+      textarea,
+      button,
+      select {
+        margin: 20px 30px;
+        font-size: 24px;
+        text-align: center;
+      }
+
+      .social-media {
+        img {
+          width: 25px;
+        }
+      }
+      .submit-input {
+        width: 13vw;
+        color: white;
+        background: #337fff;
+        border: none;
+        border-radius: 40px;
+        margin: auto;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

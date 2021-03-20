@@ -5,7 +5,10 @@ import { getCurrentProfile } from '../../redux/reducers/profile/profile.actions'
 import Spinner from '../spinner/spinner.component'; 
 import {Link} from 'react-router-dom'; 
 import './dashboard.styles.scss'; 
-import Alert from '../alert/alert'; 
+import Alert from '../alert/alert.component'; 
+import ListExperience from '../list-experience/list-experience.component';
+
+
 
 const Dashboard = ({getCurrentProfile, auth, profile}) => {
     // when we use the empty brackets acts like component did mount, otherwise it's a loop 
@@ -34,6 +37,9 @@ const Dashboard = ({getCurrentProfile, auth, profile}) => {
                 </div>
             )
             }
+            <div className='list-experience'>
+                <ListExperience/>
+            </div>
         </div>
     )
 }

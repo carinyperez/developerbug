@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import { setAlert } from '../../redux/reducers/alert/alert.actions';
 import PropTypes from 'prop-types'; 
 import avatar from '../../assets/avatar.png'
-import Alert from '../alert/alert';
+import Alert from '../alert/alert.component';
 import { signup } from '../../redux/reducers/auth/auth.actions';
 
 const SignUp = ({setAlert, signup, isAuthenticated}) => {
