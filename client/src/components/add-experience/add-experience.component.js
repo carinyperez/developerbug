@@ -4,26 +4,26 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux'; 
 import {addExperience} from '../../redux/reducers/profile/profile.actions';
 import './add-experience.styles.scss'; 
-import Alert from '../alert/alert.js'; 
 import codingCat from '../../assets/coding-cat.png'; 
 
-// onSubmit call addExperience profileaction with form data 
-export const AddExperience = ({history, addExperience}) => {
-    // set state hook, data is in formData 
+const AddExperience = ({history, addExperience}) => {
     const [formData, setFormData] = useState({
-        jobtitle: '', 
+        title: '', 
         company: '', 
         location: '', 
-        fromdate: '',
-        todate: '', 
-        jobdesc: ''
+        from: '',
+        to: '', 
+        current: false,
+        description: ''
     }); 
-    // destucture the properties from formData 
+    // lesson 50 @ 12:42
+    const [toDateDisabled, toggleDisabled] = useState(false);
     const {
-        jobtitle, company, location, fromdate, todate,jobdesc
+        title, company, location, from, to, current,description
     } = formData; 
-    // onChange send values to state 
-    // getform data from user 
+
+    // fill in the form with current data 
+
     const handleChange = (e) => {
         setFormData({
             ...formData, 
@@ -47,8 +47,8 @@ export const AddExperience = ({history, addExperience}) => {
                     </div>
                     <input type='text' placeholder='Job Title'
                     onChange={handleChange}
-                    name='jobtitle' 
-                    value = {jobtitle}
+                    name='title' 
+                    value = {title}
                     required
                     ></input>
                     <input type='text' placeholder='Company'
@@ -64,27 +64,45 @@ export const AddExperience = ({history, addExperience}) => {
                     ></input>
                     <label> From Date
                     <br/>
-                    <input type='text' placeholder='mm/dd/yyyy'
+                    <input type='date'
                     onChange={handleChange}
-                    value={fromdate}
-                    name='fromdate' 
+                    value={from}
+                    name='from' 
+                    required
                     ></input>
+                    </label>
+                    <label className='checkbox'>
+                    <input
+                    type='checkbox'
+                    name='current'
+                    checked={current}
+                    onChange={e => {
+                        setFormData({
+                            ...formData, current: !current
+                        })
+                        // set to true when clicked 
+                        toggleDisabled(!toDateDisabled)
+                    }}
+                    >
+                    </input>{' '}
+                    Current job
                     </label>
                     <label> To Date
                     <br/>
-                    <input type='text' placeholder='mm/dd/yyyy'
-                    name='todate' 
+                    <input type='date'
+                    name='to' 
                     onChange={handleChange}
-                    value={todate}
+                    value={to}
+                    // if checkbox is checked set field to disabled
+                    disabled={toDateDisabled ? 'disabled' : ''}
                     ></input>
                     </label>
                     <textarea type='text' placeholder='Job Description'
-                    name='jobdesc'
+                    name='description'
                     onChange={handleChange}
-                    value={jobdesc}
+                    value={description}
                     >
                     </textarea>
-                    <Alert/>
                     <input type='submit' value='Submit' className='experience-input'/>
                 </form>
             </div>
@@ -92,16 +110,16 @@ export const AddExperience = ({history, addExperience}) => {
     )
 }
 
-// AddExperience.propTypes = {
-//     addExperience: PropTypes.func.isRequired
-// }
+AddExperience.propTypes = {
+    addExperience: PropTypes.func.isRequired
+}
 
-// const mapDispatchToProps = (dispatch) => {
-//     return ({
-//         addExperience: addExperience
-//     })
-// }
+// bring in the profile state
 
-export default connect(null, {addExperience})(withRouter(AddExperience)); 
+const mapStateToProps = state => ({
+    profile: state. profile
+})
+
+export default connect(mapStateToProps, {addExperience})(withRouter(AddExperience)); 
 
 

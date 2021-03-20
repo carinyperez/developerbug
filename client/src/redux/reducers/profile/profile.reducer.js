@@ -14,7 +14,8 @@ const INITIAL_STATE = {
 
 const profileReducer = (state = INITIAL_STATE, action) => {
     switch(action.type) {
-        case ProfileActionTypes.GET_PROFILE: 
+        case ProfileActionTypes.GET_PROFILE:
+        case ProfileActionTypes.UPDATE_PROFILE:  
         return {
             ...state, 
             profile: action.payload, 

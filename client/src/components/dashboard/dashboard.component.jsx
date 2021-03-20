@@ -5,7 +5,7 @@ import { getCurrentProfile } from '../../redux/reducers/profile/profile.actions'
 import Spinner from '../spinner/spinner.component'; 
 import {Link} from 'react-router-dom'; 
 import './dashboard.styles.scss'; 
-
+import Alert from '../alert/alert'; 
 
 const Dashboard = ({getCurrentProfile, auth, profile}) => {
     // when we use the empty brackets acts like component did mount, otherwise it's a loop 
@@ -20,6 +20,7 @@ const Dashboard = ({getCurrentProfile, auth, profile}) => {
             <p>
                 Welcome {auth.user && auth.user.name}
             </p>
+            <Alert className='alert'/>
             {profile.profile !== null ? (
                 <div className='dashboard-links'>
                     <Link to='edit-profile'> Edit Profile</Link>

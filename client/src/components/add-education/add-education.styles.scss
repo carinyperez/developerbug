@@ -1,9 +1,9 @@
-.experience-container {
+.education-container {
   padding-bottom: 50px;
   h1 {
     text-align: center;
   }
-  .experience {
+  .education {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,11 +18,10 @@
       .checkbox {
         padding: 10px 0px;
       }
-      .experience-header {
+      .education-header {
         img {
           margin-top: 20px;
           width: 200px;
-          height: 200px;
           float: center;
           padding-right: 10px;
         }
@@ -46,7 +45,7 @@
           margin: 10px 0px;
         }
       }
-      .experience-input {
+      .education-input {
         width: 13vw;
         color: white;
         background: #337fff;

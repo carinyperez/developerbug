@@ -9,7 +9,6 @@ import instagram1 from '../../assets/instagram.png';
 import youtube1 from '../../assets/youtube.png';  
 import './edit-profile.styles.scss';
 import { createProfile,getCurrentProfile} from '../../redux/reducers/profile/profile.actions';
-import Alert from '../../components/alert/alert.js'; 
 import PropTypes from 'prop-types';
 
 
@@ -136,7 +135,6 @@ const EditProfile = ({profile : {profile, loading}, createProfile,getCurrentProf
                     value={bio}
                     onChange={handleChange}
                     ></textarea>
-                    <Alert/>
                     {/* on click set selected to true */}
                     <button onClick={ (e) => {
                         e.preventDefault()

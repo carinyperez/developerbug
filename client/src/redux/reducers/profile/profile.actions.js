@@ -3,10 +3,6 @@ import {setAlert} from '../alert/alert.actions';
 import ProfileActionTypes from './profile.types';
 
 
-
-
-
-
 // Get current users profile 
 export const getCurrentProfile = () => async dispatch => {
     try {
@@ -31,8 +27,12 @@ export const createProfile = (formData, history, edit = false) => async (
   dispatch
 ) => {
   try {
-    const res = await axios.post('api/profile', formData);
-    console.log(res); 
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    const res = await axios.post('api/profile', formData, config);
     dispatch({
       type: ProfileActionTypes.GET_PROFILE,
       payload: res.data
@@ -58,8 +58,61 @@ export const createProfile = (formData, history, edit = false) => async (
 }
 
 // Add experience 
+export const addExperience = (formData, history) => async (
+  dispatch
+) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type':'application/json'
+      }
+    }
+    const res = await axios.put('api/profile/experience', formData);
+      dispatch({
+        type: ProfileActionTypes.UPDATE_PROFILE,
+        payload: res.data
+      })
+      dispatch(setAlert('Experience added', 'success'));
+      history.push('/dashboard'); 
+    } catch (err) {
+      const errors = err.response.data.errors; 
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      }
+      dispatch({
+        type: ProfileActionTypes.PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      })
+    }
+}
 
+// Add education 
+export const addEducation = (formData, history) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    const res = await axios.put('api/profile/education',formData, config); 
+    dispatch({
+      type: ProfileActionTypes.UPDATE_PROFILE,
+      payload: res.data
+    })
+    dispatch(setAlert('Education added', 'success')); 
+    history.push('/dashboard');
 
-export const addExperience = (formData, history) => async dipspatch => {
-    console.log('add experience')
+  } catch (err) {
+    console.log(err.response); 
+    const errors = err.response.data.errors; 
+    if (errors) {
+      console.log(errors.response); 
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+    dispatch({
+      type: ProfileActionTypes.PROFILE_ERROR,
+      payload: {msg: err.response.status, status: err.response.statusText}
+    })
+  }
+  
 }

@@ -59,7 +59,7 @@ const Profile = ({createProfile, history}) => {
         // console.log('handle submit');
         e.preventDefault(); 
         createProfile(formData, history);
-        // console.log(formData);
+        console.log(formData);
     }
     return (
         <div className='profile-container'>

@@ -1,6 +1,11 @@
 .dashboard-container {
   height: 100vh;
   margin: 30px;
+  .alert {
+    color: green;
+    text-align: left;
+    padding: 0px 0px 20px 0px;
+  }
   .dashboard-links {
     display: flex;
     flex-direction: row;

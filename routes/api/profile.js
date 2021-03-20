@@ -67,8 +67,8 @@ router.post(
         if(website) profileFields.website = website; 
         if(location) profileFields.location = location; 
         if(bio) profileFields.bio = bio; 
-        if(status) profileFields.status= status; 
-        if(githubusername) profileFields.status= githubusername;  
+        if(occupation) profileFields.occupation= occupation; 
+        if(githubusername) profileFields.githubusername= githubusername;  
         if(skills) { 
             profileFields.skills = skills.split(',').map(skill => skill.trim())
         }
@@ -175,6 +175,7 @@ router.put('/experience', [auth, [
     check('from', 'From date is required').not().isEmpty(),
     ]],
     async(req, res) => {
+        console.log('Experience route'); 
         console.log(req.body); 
         const errors = validationResult(req); 
         if (!errors.isEmpty()) {
