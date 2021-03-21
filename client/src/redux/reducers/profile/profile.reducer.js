@@ -21,6 +21,12 @@ const profileReducer = (state = INITIAL_STATE, action) => {
             profile: action.payload, 
             loading: false 
         }
+        case ProfileActionTypes.GET_PROFILES: 
+        return {
+            ...state, 
+            profiles: action.payload, 
+            loading:false
+        }
         case ProfileActionTypes.PROFILE_ERROR: 
         return {
             ...state, 

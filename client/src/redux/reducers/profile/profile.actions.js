@@ -56,6 +56,43 @@ export const createProfile = (formData, history, edit = false) => async (
   }
 }
 
+// Get all profiles 
+export const getAllProfiles = () => async dispatch => {
+  // dispatch({type: ProfileActionTypes.CLEAR_PROFILE})
+  try {
+    const res = await axios.get('api/profile'); 
+    // console.log(res); 
+    dispatch({
+      type: ProfileActionTypes.GET_PROFILES,
+      payload: res.data
+    })
+    dispatch(setAlert('Got profiles', 'success'))
+  } catch (err) {
+    dispatch({
+      type: ProfileActionTypes.PROFILE_ERROR, 
+      payload: {msg: err.response.statusText, status: err.response.status}
+    })
+  }
+}
+
+// Get profile by id 
+export const getProfileById = (user_id) => async dispatch => {
+  try {
+    const res = await axios.get(`api/profile/user/${user_id}`); 
+    console.log(res);
+    dispatch({
+      type: ProfileActionTypes.GET_PROFILE, 
+      payload: res.data
+    })
+    dispatch(setAlert('Got profile', 'success'))
+  } catch (err) {
+    dispatch({
+      type: ProfileActionTypes.PROFILE_ERROR, 
+      payload: {msg: err.response.statusText, status: err.response.status}
+    })
+  }
+}
+
 // Add experience 
 export const addExperience = (formData, history) => async (
   dispatch
