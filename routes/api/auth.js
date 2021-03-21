@@ -13,7 +13,6 @@ const config = require('config');
 // auth makes this route protected 
 router.get('/', auth, async(req, res) => {
     try {
-        console.log(req);
         const user = await User.findById(req.user.id).select('-password'); 
         res.json(user); 
 

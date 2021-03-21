@@ -1,7 +1,7 @@
 import axios from 'axios'; 
 import {setAlert} from '../alert/alert.actions'; 
+import AuthActionTypes from '../auth/auth.types';
 import ProfileActionTypes from './profile.types';
-
 
 // Get current users profile 
 export const getCurrentProfile = () => async dispatch => {
@@ -102,16 +102,76 @@ export const addEducation = (formData, history) => async dispatch => {
     history.push('/dashboard');
 
   } catch (err) {
-    console.log(err.response); 
+    // {data: "Server Error", status: 500, statusText: "Internal Server Error", headers: {…}, config: {…}, …}
     const errors = err.response.data.errors; 
     if (errors) {
-      console.log(errors.response); 
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
     dispatch({
       type: ProfileActionTypes.PROFILE_ERROR,
-      payload: {msg: err.response.status, status: err.response.statusText}
+      payload: {msg: err.response.statusText, status: err.response.status}
     })
   }
   
 }
+
+// delete experience 
+export const deleteExperience = (exp_id) => async dispatch => {
+  try {
+    const res = await axios.delete(`api/profile/experience/${exp_id}`); 
+    dispatch({
+      type: ProfileActionTypes.UPDATE_PROFILE,
+      payload: res.data
+    }) 
+    dispatch(setAlert('Experience deleted', 'success'))
+  } catch (err) {
+    dispatch({
+      type: ProfileActionTypes.PROFILE_ERROR, 
+      payload: {msg: err.response.statusText, status: err.response.status}
+    })
+  } 
+}
+
+// Delete education 
+export const deleteEducation = (edu_id) =>  async dispatch => {
+  try {
+    const res = await axios.delete(`api/profile/education/${edu_id}`); 
+    dispatch({
+      type: ProfileActionTypes.UPDATE_PROFILE, 
+      payload: res.data
+    })
+    dispatch(setAlert('Education deleted', 'success')); 
+  } catch (err) {
+    // {data: "Server Error", status: 500, statusText: "Internal Server Error", headers: {…}, config: {…}, …}
+    dispatch({
+      type: ProfileActionTypes.PROFILE_ERROR,
+      payload: {msg: err.response.statusText, status: err.response.status} 
+    })
+  }
+}
+
+// Delete account and clear profile 
+export const deleteAccount = (history) => async dispatch => {
+  if(window.confirm('This will delete your account PERMANENTLY!')) {
+    console.log('delete account'); 
+    try {
+      const res = await axios.delete('api/profile');
+      dispatch({
+        type: AuthActionTypes.ACCOUNT_DELETED, 
+      })  
+      dispatch({
+        type: ProfileActionTypes.CLEAR_PROFILE
+      }) 
+      dispatch(setAlert('Your account has been permanently deleted'));
+
+    } catch (err) {
+      dispatch({
+        type: ProfileActionTypes.PROFILE_ERROR, 
+        payload: {msg: err.response.statusText, status: err.response.status}
+      }) 
+    }
+  };
+}
+
+
+

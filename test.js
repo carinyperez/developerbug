@@ -1,58 +1,9 @@
-// const { exit } = require('process');
-// const readline = require('readline');
-
-// const reader = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-// })
-
-// class Game {
-//     constructor() {
-//         this.towers=[[3,2,1], [], []]
-//     }
-//     promptMove(reader, callback) {
-//         reader.question("What's the start index?",start => { 
-//             callback(start)
-//             reader.question("What's the end index?",end => {
-//                 ; 
-//             callback(end)
-//             reader.close(); 
-//             })
-//         })
-//     }   
-// }
-
-// // callback function 
-// function printIndex(index) {
-//    const towerIdx = parseInt(index); 
-//    console.log(towerIdx); 
-// }
-
-// const game = new Game();
-// game.promptMove(reader, printIndex);
+let profile =  { 
+    experience : [1, 2, 3], 
+    education: [1, 2, 3]
+}
 
 
+profile.education = profile.education.filter(item => item !== 1); 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// console.log(["html", "css", "js"].join(',')); 
-
-
-var text = 'daslkdaskldj.asdasdasd';
-console.log(text.split('.')[0]);
+console.log(profile); 

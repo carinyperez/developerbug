@@ -176,7 +176,6 @@ const Profile = ({createProfile, history}) => {
         </div>
     )
 }
-
 Profile.propTypes = {
     createProfile: PropTypes.func.isRequired,
 }

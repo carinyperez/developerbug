@@ -4,7 +4,7 @@ import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux'; 
 import PropTypes from 'prop-types'; 
 import { login } from '../../redux/reducers/auth/auth.actions';
-
+import Alert from '../alert/alert.component'; 
 
 const Login = ({login, isAuthenticated}) => {
     // use state hook 
@@ -36,6 +36,7 @@ const Login = ({login, isAuthenticated}) => {
     return (
         <div className='login-container'>
             <h1>Welcome back</h1>
+            <Alert/>
             <div className='login'>
 
                 <form className='form' onSubmit={event => handleSubmit(event)}>

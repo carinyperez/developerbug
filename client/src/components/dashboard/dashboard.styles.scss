@@ -16,6 +16,14 @@
     }
   }
   .list-experience {
-    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+  }
+  .delete {
+    margin: 20px;
+    color: white;
+    background-color: #ff4b2b;
+    border-style: none;
+    height: 5vh;
   }
 }

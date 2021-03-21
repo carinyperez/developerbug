@@ -12,14 +12,14 @@ alerts !== null && alerts.length > 0 && alerts.map(alert => (
 ))
 
 
-
 // data validation 
 Alert.propTypes = {
     alerts: PropTypes.array.isRequired
 }
 
 
-// map redux state to props by using connect 
+// map redux state to props by using connect
+// alert component triggered by the state  
 const mapStateToProps = (state) => ({
     alerts: state.alert
 })
