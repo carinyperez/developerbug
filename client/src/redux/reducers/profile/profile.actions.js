@@ -8,6 +8,7 @@ export const getCurrentProfile = () => async dispatch => {
     try {
         // only returns profile if there is a profile associated with the user's token 
         const res = await axios.get('/api/profile/me');
+        console.log(res); 
         dispatch({
             type: ProfileActionTypes.GET_PROFILE,
             payload: res.data
@@ -32,6 +33,7 @@ export const createProfile = (formData, history, edit = false) => async (
       }
     }
     const res = await axios.post('api/profile', formData, config);
+    console.log(res); 
     dispatch({
       type: ProfileActionTypes.GET_PROFILE,
       payload: res.data
@@ -48,7 +50,6 @@ export const createProfile = (formData, history, edit = false) => async (
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
-
     dispatch({
       type: ProfileActionTypes.PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
@@ -61,22 +62,24 @@ export const getAllProfiles = () => async dispatch => {
   // dispatch({type: ProfileActionTypes.CLEAR_PROFILE})
   try {
     const res = await axios.get('api/profile'); 
-    // console.log(res); 
+    console.log(res); 
     dispatch({
       type: ProfileActionTypes.GET_PROFILES,
       payload: res.data
     })
     dispatch(setAlert('Got profiles', 'success'))
   } catch (err) {
-    dispatch({
-      type: ProfileActionTypes.PROFILE_ERROR, 
-      payload: {msg: err.response.statusText, status: err.response.status}
-    })
+    console.log(err)
+    // dispatch({
+    //   type: ProfileActionTypes.PROFILE_ERROR,
+    //   payload: {msg: err.response.statusText, status: err.response.status}
+    // })
   }
 }
 
 // Get profile by id 
 export const getProfileById = (user_id) => async dispatch => {
+  console.log(user_id); 
   try {
     const res = await axios.get(`api/profile/user/${user_id}`); 
     console.log(res);
@@ -90,6 +93,23 @@ export const getProfileById = (user_id) => async dispatch => {
       type: ProfileActionTypes.PROFILE_ERROR, 
       payload: {msg: err.response.statusText, status: err.response.status}
     })
+  }
+}
+
+// get github repos 
+export const getGithubRepos = (username) => async dispatch =>  {
+  try {
+    const res = await axios.get(`api/profile/github/${username}`); 
+    dispatch({
+      type: ProfileActionTypes.GET_REPOS, 
+      payload: res.data
+    })
+    dispatch(setAlert('Got gihub repos', 'success')); 
+  } catch (err) {
+    dispatch({
+      type: ProfileActionTypes.PROFILE_ERROR, 
+      payload: {msg: err.response.statusText, status: err.response.status}
+    }) 
   }
 }
 

@@ -109,17 +109,14 @@ router.post(
 // @route GET api/profile
 // @ desc Get all profiles 
 // @ access Public 
-
 router.get('/',auth, async (req, res) => {
     try {
         const profiles = await Profile.find().populate('user', ['name', 'avatar']); 
-        res.json(profiles); 
-        
+        res.json(profiles);  
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
-
 })
 
 // @route GET api/profile/user/:user_id
@@ -250,7 +247,6 @@ router.put('/education', [auth, [
             return res.status(400).json({errors: errors.array})
         }
         const {school, degree, fieldofstudy, from, to, current, description} = req.body;
-        
         // create an education object 
         const newEdu = {
             school, 
@@ -261,7 +257,6 @@ router.put('/education', [auth, [
             current, 
             description 
         }
-
         try {
             const profile = await Profile.findOne({user: req.user.id})
             profile.education.unshift(newEdu); 
@@ -297,7 +292,6 @@ router.delete('/education/:edu_id',auth, async (req, res) => {
 // @route GET api/profile/github/:username
 // @ desc Get user repos from github
 // @ access Public 
-
 router.get('/github/:username', (req, res)=> {
     try {
         const options = {
@@ -306,19 +300,16 @@ router.get('/github/:username', (req, res)=> {
             method: 'GET',
             headers: {'user-agent': 'node.js'}
         }
-
         request(options, (error, response, body)=> {
             if(error) console.error(error); 
             if(response.statusCode !== 200) {
                 return res.status(404).json({msg: 'No Github profile found'})
             }
             res.json(JSON.parse(body)); 
-        })
-        
+        })   
     } catch (err) {
         console.error(err.message); 
-        res.status(500).send('Server Error'); 
-        
+      res.status(500).send('Server Error');  
     }
 })
 

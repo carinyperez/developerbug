@@ -42,7 +42,8 @@ const EditProfile = ({profile : {profile, loading}, createProfile,getCurrentProf
         instagram
     } = formData; 
     const [selected, setSelected] = useState(false);
-    // passing empty array as second element makes in run on mount and unmount otherwise runs everytime component updates 
+    // passing empty array as second element makes in run on mount and unmount otherwise runs everytime component updates
+    // similar to componentDidMount  
     useEffect(() => {
         getCurrentProfile(); 
         // fill in the form with the current formData 
@@ -61,7 +62,7 @@ const EditProfile = ({profile : {profile, loading}, createProfile,getCurrentProf
             youtube: loading || !profile.social ? '': profile.social.youtube,
             instagram: loading || !profile.social ? '': profile.social.instagram,
         })
-    }, [])
+    }, [profile, getCurrentProfile]);
 
     const handleChange = e => {
         setFormData({

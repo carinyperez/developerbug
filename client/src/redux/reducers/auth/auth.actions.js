@@ -4,7 +4,6 @@ import {setAlert} from '../alert/alert.actions'
 import setAuthToken from '../../../utils/setAuthToken';
 import ProfileActionTypes from '../profile/profile.types';
 
-
 // Load User 
 export const loadUser = () => async dispatch => {
     console.log('load user'); 
@@ -64,7 +63,7 @@ export const login = (email, password) => async dispatch => {
   
     try {
       const res = await axios.post('api/auth', body);
-  
+      console.log(res);
       dispatch({
         type: AuthActionTypes.LOGIN_SUCCESS,
         payload: res.data

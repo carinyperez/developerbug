@@ -16,12 +16,12 @@ import Profile from './components/profile/profile.component';
 import EditProfile from './components/edit-profile/edit-profile';
 import AddExperience from './components/add-experience/add-experience.component';
 import AddEducation from './components/add-education/add-education.component';
+import Developers from './components/developers/developers.component';
 
 if(localStorage.token) {
   setAuthToken(localStorage.token)
 }
 const App = () =>  {
-
   // when we use the empty brackets acts like component did mount, otherwise it's a loop 
   useEffect(() => {
     // dispatch is a method in the store 
@@ -37,6 +37,7 @@ const App = () =>  {
           <Route exact path ='/' component={Homepage} />
           <Route exact path ='/login' component={Login}/>
           <Route exact path ='/signup' component={SignUp}/>
+          <Route exact path ='/developers' component={Developers}/>
           <PrivateRoute exact path ='/dashboard' component={Dashboard}/>
           <PrivateRoute exact path ='/create-profile' component={Profile}/>
           <PrivateRoute exact path ='/edit-profile' component={EditProfile}/>

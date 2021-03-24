@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {withRouter} from 'react-router-dom'; 
 import PropTypes from 'prop-types'; 
 import {connect} from 'react-redux'; 
-import { getCurrentProfile, deleteAccount, getAllProfiles, getProfileById} from '../../redux/reducers/profile/profile.actions';
+import { getCurrentProfile, deleteAccount, getAllProfiles, getProfileById, getGithubRepos} from '../../redux/reducers/profile/profile.actions';
 import Spinner from '../spinner/spinner.component'; 
 import {Link} from 'react-router-dom'; 
 import './dashboard.styles.scss'; 
@@ -11,12 +11,12 @@ import ListExperience from '../list-experience/list-experience.component';
 import ListEducation from '../list-education/list-education.component';
 
 
-const Dashboard = ({getCurrentProfile, auth, profile, deleteAccount, history, getAllProfiles, getProfileById}) => {
+const Dashboard = ({getCurrentProfile, auth, profile, deleteAccount, history, getAllProfiles, getProfileById, getGithubRepos}) => {
     // when we use the empty brackets acts like component did mount, otherwise it's a loop 
     // if component did mount call function 
     useEffect(() => {
         getCurrentProfile(); 
-    }, [])
+    }, [getCurrentProfile])
     return (
          profile.loading && profile.profile == null ? <Spinner/> : 
         <div className='dashboard-container'>
@@ -38,9 +38,9 @@ const Dashboard = ({getCurrentProfile, auth, profile, deleteAccount, history, ge
                 </div>
                 <button className='delete' onClick={() => deleteAccount(history)}>Delete my Account</button>
                 <button onClick={() => getAllProfiles()}>Get all profiles</button>
-                <button onClick={() => getProfileById(auth.user._id)}>Get profile by id</button>
-                </div>
-                
+                <button onClick={() => getProfileById(profile.profile.user)}>Get profile by id</button>
+                <button onClick={() => getGithubRepos('carinyperez')}>Get github repos</button> 
+                </div> 
             ) : (
                 <div>
                     <Alert className='alert'/>
@@ -58,7 +58,8 @@ Dashboard.propTypes = {
     profile: PropTypes.object.isRequired, 
     deleteAccount: PropTypes.func.isRequired, 
     getAllProfiles: PropTypes.func.isRequired, 
-    getProfileById: PropTypes.func.isRequired
+    getProfileById: PropTypes.func.isRequired, 
+    getGithubRepos: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -66,4 +67,4 @@ const mapStateToProps = state => ({
     profile: state.profile , 
 })
 
-export default connect(mapStateToProps, {getCurrentProfile, deleteAccount, getAllProfiles, getProfileById})(withRouter(Dashboard)); 
+export default connect(mapStateToProps, {getCurrentProfile, deleteAccount, getAllProfiles, getProfileById, getGithubRepos})(withRouter(Dashboard)); 
