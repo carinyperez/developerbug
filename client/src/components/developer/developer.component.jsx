@@ -1,10 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom'; 
 import './developer.styles.scss'; 
 
 const Developer = ({profile, user}) => { 
     return (
-        <div>
+        <div className='developer'>
         <img src={user.avatar} alt='avatar'></img>
         <p>{user.name}</p>
         <p>{profile.occupation}</p>
@@ -14,6 +15,8 @@ const Developer = ({profile, user}) => {
                 <li key={index}>{skill}</li>
             ))
         }
+        <br/>
+        <Link to={`/profile/${user._id}`} className='profile'> View Profile</Link>
         </div>
     )
 }

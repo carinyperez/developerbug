@@ -1,4 +1,17 @@
-.alert {
-  color: green;
-  text-align: left;
+.developer-header {
+  text-align: center;
+}
+
+.developers {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  .alert {
+    color: green;
+    text-align: left;
+  }
+  .developer {
+    text-align: center;
+    margin: 100px 50px;
+  }
 }

@@ -31,6 +31,7 @@ const Header = (props) => {
             <div className='header-container'>
             <div className='header'>
                 <Link to='/' className='title'>DeveloperBug</Link>
+                <Link to='/developers'>Developers</Link>
                 <Link to='/signup'>Sign Up</Link>
                 <Link to='/login'>Log In</Link>
             </div>
