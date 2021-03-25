@@ -10,8 +10,9 @@ import facebook1 from '../../assets/facebook.png';
 import instagram1 from '../../assets/instagram.png';
 import youtube1 from '../../assets/youtube.png'; 
 import linkedin1 from '../../assets/linkedin.png'; 
-
+import DeveloperAbout from '../developerabout/developerabout.component';
 import './developerprofile.styles.scss';
+
 
 const DeveloperProfile = ({getProfileById, match: {params}, profile : {profile, loading}, auth}) => {
     useEffect(() => {
@@ -63,6 +64,7 @@ const DeveloperProfile = ({getProfileById, match: {params}, profile : {profile, 
                 }
                 </div>
             }
+            <DeveloperAbout profile={profile}/>
             {auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id && (<Link to='/edit-profile'>Edit Profile</Link>)}
         </div>
         

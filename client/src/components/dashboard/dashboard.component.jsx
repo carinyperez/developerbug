@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {withRouter} from 'react-router-dom'; 
 import PropTypes from 'prop-types'; 
 import {connect} from 'react-redux'; 
-import { getCurrentProfile, deleteAccount, getAllProfiles, getProfileById, getGithubRepos} from '../../redux/reducers/profile/profile.actions';
+import { getCurrentProfile, deleteAccount} from '../../redux/reducers/profile/profile.actions';
 import Spinner from '../spinner/spinner.component'; 
 import {Link} from 'react-router-dom'; 
 import './dashboard.styles.scss'; 
@@ -11,7 +11,7 @@ import ListExperience from '../list-experience/list-experience.component';
 import ListEducation from '../list-education/list-education.component';
 
 
-const Dashboard = ({getCurrentProfile, auth, profile, deleteAccount, history, getAllProfiles, getProfileById, getGithubRepos}) => {
+const Dashboard = ({getCurrentProfile, auth, profile, deleteAccount, history}) => {
     // when we use the empty brackets acts like component did mount, otherwise it's a loop 
     // if component did mount call function 
     useEffect(() => {
@@ -37,9 +37,6 @@ const Dashboard = ({getCurrentProfile, auth, profile, deleteAccount, history, ge
                     <ListEducation education = {profile.profile.education}/>
                 </div>
                 <button className='delete' onClick={() => deleteAccount(history)}>Delete my Account</button>
-                <button onClick={() => getAllProfiles()}>Get all profiles</button>
-                <button onClick={() => getProfileById(profile.profile.user)}>Get profile by id</button>
-                <button onClick={() => getGithubRepos('carinyperez')}>Get github repos</button> 
                 </div> 
             ) : (
                 <div>
@@ -56,10 +53,7 @@ Dashboard.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired, 
     profile: PropTypes.object.isRequired, 
-    deleteAccount: PropTypes.func.isRequired, 
-    getAllProfiles: PropTypes.func.isRequired, 
-    getProfileById: PropTypes.func.isRequired, 
-    getGithubRepos: PropTypes.func.isRequired
+    deleteAccount: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -67,4 +61,4 @@ const mapStateToProps = state => ({
     profile: state.profile , 
 })
 
-export default connect(mapStateToProps, {getCurrentProfile, deleteAccount, getAllProfiles, getProfileById, getGithubRepos})(withRouter(Dashboard)); 
+export default connect(mapStateToProps, {getCurrentProfile, deleteAccount})(withRouter(Dashboard)); 

@@ -8,7 +8,6 @@ export const getCurrentProfile = () => async dispatch => {
     try {
         // only returns profile if there is a profile associated with the user's token 
         const res = await axios.get('/api/profile/me');
-        console.log(res);
         dispatch({
             type: ProfileActionTypes.GET_PROFILE,
             payload: res.data
