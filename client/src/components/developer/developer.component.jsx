@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom'; 
+import {Link} from 'react-router-dom';
 import './developer.styles.scss'; 
 
 const Developer = ({profile, user}) => { 
@@ -11,12 +11,12 @@ const Developer = ({profile, user}) => {
         <p>{profile.occupation}</p>
         <p>{profile.location}</p>
         {
-            profile.skills.map((skill, index) => (
+            profile.skills.slice(0,3).map((skill, index) => (
                 <li key={index}>{skill}</li>
             ))
         }
         <br/>
-        <Link to={`/profile/${user._id}`} className='profile'> View Profile</Link>
+        <Link to={`developer/${user._id}`} className='profile'>View Profile</Link>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'; 
-import {Link, withRouter} from 'react-router-dom'; 
+import {withRouter} from 'react-router-dom'; 
 import cat from '../../assets/cat.png'; 
 import twitter1 from '../../assets/twitter.png'; 
 import facebook1 from '../../assets/facebook.png'; 

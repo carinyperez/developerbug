@@ -8,7 +8,7 @@ export const getCurrentProfile = () => async dispatch => {
     try {
         // only returns profile if there is a profile associated with the user's token 
         const res = await axios.get('/api/profile/me');
-        console.log(res); 
+        console.log(res);
         dispatch({
             type: ProfileActionTypes.GET_PROFILE,
             payload: res.data
@@ -70,10 +70,10 @@ export const getAllProfiles = () => async dispatch => {
     dispatch(setAlert('Got profiles', 'success'))
   } catch (err) {
     console.log(err)
-    // dispatch({
-    //   type: ProfileActionTypes.PROFILE_ERROR,
-    //   payload: {msg: err.response.statusText, status: err.response.status}
-    // })
+    dispatch({
+      type: ProfileActionTypes.PROFILE_ERROR,
+      payload: {msg: err.response.statusText, status: err.response.status}
+    })
   }
 }
 
@@ -81,7 +81,7 @@ export const getAllProfiles = () => async dispatch => {
 export const getProfileById = (user_id) => async dispatch => {
   console.log(user_id); 
   try {
-    const res = await axios.get(`api/profile/user/${user_id}`); 
+    const res = await axios.get(`/api/profile/user/${user_id}`);
     console.log(res);
     dispatch({
       type: ProfileActionTypes.GET_PROFILE, 
@@ -89,6 +89,7 @@ export const getProfileById = (user_id) => async dispatch => {
     })
     dispatch(setAlert('Got profile', 'success'))
   } catch (err) {
+    console.error(err); 
     dispatch({
       type: ProfileActionTypes.PROFILE_ERROR, 
       payload: {msg: err.response.statusText, status: err.response.status}
@@ -212,7 +213,7 @@ export const deleteAccount = (history) => async dispatch => {
   if(window.confirm('This will delete your account PERMANENTLY!')) {
     console.log('delete account'); 
     try {
-      const res = await axios.delete('api/profile');
+      await axios.delete('api/profile');
       dispatch({
         type: AuthActionTypes.ACCOUNT_DELETED, 
       })  

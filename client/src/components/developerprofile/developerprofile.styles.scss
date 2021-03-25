@@ -1,0 +1,17 @@
+.developer-profile {
+  height: 100vh;
+  text-align: center;
+  .developer-header {
+    text-align: center;
+  }
+  .social {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    img {
+      height: 30px;
+      padding-right: 30px;
+      margin-bottom: 20px;
+    }
+  }
+}

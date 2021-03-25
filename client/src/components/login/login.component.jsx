@@ -12,27 +12,21 @@ const Login = ({login, isAuthenticated}) => {
         email: '', 
         password: ''
     }); 
-
     const {email, password} = formData; 
-
     const handleChange = (event) => {
         // console.log(event.target.name); 
         // console.log(event.target.value); 
         setFormData({...formData, [event.target.name]: event.target.value}); 
     }
-
     // registers the user in mongoDB using state 
     const handleSubmit = async (event) => {
         event.preventDefault(); 
-        console.log('Success');
         login(email, password); 
     }
-
     //Redirect if logged in 
     if(isAuthenticated) {
         return <Redirect to='/dashboard'/>
     }
-
     return (
         <div className='login-container'>
             <h1>Welcome back</h1>
@@ -61,13 +55,11 @@ const Login = ({login, isAuthenticated}) => {
     )
 }
 
-// proptypes check the argumnet passed, the prop must be a function 
 Login.propTypes = {
     login: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
 }
 
-// brings in the current state from the redux store 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 })

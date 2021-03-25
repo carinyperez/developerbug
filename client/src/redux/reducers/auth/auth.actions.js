@@ -4,23 +4,16 @@ import {setAlert} from '../alert/alert.actions'
 import setAuthToken from '../../../utils/setAuthToken';
 import ProfileActionTypes from '../profile/profile.types';
 
-// Load User 
 export const loadUser = () => async dispatch => {
-    console.log('load user'); 
-    // if there is a token in local storage set auth token in the headers
-    //x-auth-token: "eyJhbGciOi..."
     if(localStorage.token) {
         setAuthToken(localStorage.token); 
     } 
-    // hit up our endpoint to signup a user using our backend auth route 
     try {
         const res = await axios.get('/api/auth'); 
-        console.log(res); 
         dispatch({
             type: AuthActionTypes.USER_LOADED,
             payload: res.data
         })
-        
     } catch (err) {
         dispatch({
             type: AuthActionTypes.AUTH_ERROR
@@ -29,8 +22,7 @@ export const loadUser = () => async dispatch => {
     }
 }
 
-
-//signup a user 
+// signup
 export const signup = ({name, email, password}) => async dispatch => {
     const config = {
         headers: {
@@ -45,9 +37,7 @@ export const signup = ({name, email, password}) => async dispatch => {
             payload: res.data
         }); 
         dispatch(loadUser()); 
-    // if empty fields call the alert action   
     } catch (err) {
-        //{name: "", email: "", password: ""}
         const errors = err.response.data.errors; 
         if(errors) {
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
@@ -57,7 +47,7 @@ export const signup = ({name, email, password}) => async dispatch => {
         })
     }
 }
-// Login User
+// login user
 export const login = (email, password) => async dispatch => {
     const body = { email, password };
   
@@ -83,7 +73,7 @@ export const login = (email, password) => async dispatch => {
     }
   };
   
-  // Logout/clear profile 
+  // logout/clear profile 
   export const logout = () => dispatch =>  {
     dispatch({ type: ProfileActionTypes.CLEAR_PROFILE});
     dispatch({ type: AuthActionTypes.LOGOUT });

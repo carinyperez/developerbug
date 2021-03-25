@@ -1,5 +1,5 @@
 import React, {useState} from 'react'; 
-import {Link, withRouter} from 'react-router-dom'; 
+import {withRouter} from 'react-router-dom'; 
 import PropTypes from 'prop-types'; 
 import {connect} from 'react-redux'; 
 import {addEducation} from '../../redux/reducers/profile/profile.actions';
@@ -119,7 +119,7 @@ AddEducation.propTypes = {
 // bring in the profile state
 
 const mapStateToProps = state => ({
-    profile: state. profile
+    profile: state.profile
 })
 
 export default connect(mapStateToProps, {addEducation})(withRouter(AddEducation)); 

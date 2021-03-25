@@ -14,7 +14,6 @@ const Developers = ({getAllProfiles, profile: {profiles, loading}}) => {
     useEffect(() => {
         getAllProfiles(); 
     }, [getAllProfiles]); 
-
     return (
         <div>
         {loading ? <Spinner/> :

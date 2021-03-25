@@ -9,9 +9,6 @@ const Header = (props) => {
     const {isAuthenticated} = props.auth; 
     const {loading} = props.auth; 
     const {logout} = props;
-    console.log(isAuthenticated);
-
-    // auth true and loading false 
     if(!loading && isAuthenticated) {
         return (
         <div className='header-container'>
@@ -31,7 +28,7 @@ const Header = (props) => {
             <div className='header-container'>
             <div className='header'>
                 <Link to='/' className='title'>DeveloperBug</Link>
-                <Link to='/developers'>Developers</Link>
+                <Link to='/profiles'>Developers</Link>
                 <Link to='/signup'>Sign Up</Link>
                 <Link to='/login'>Log In</Link>
             </div>
