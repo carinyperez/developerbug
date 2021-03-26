@@ -11,6 +11,8 @@ import instagram1 from '../../assets/instagram.png';
 import youtube1 from '../../assets/youtube.png'; 
 import linkedin1 from '../../assets/linkedin.png'; 
 import DeveloperAbout from '../developerabout/developerabout.component';
+import DeveloperExperience from '../developerexperience/developerexperience.component';
+import DeveloperEducation from '../developereducation/developereducation.component';
 import './developerprofile.styles.scss';
 
 
@@ -65,6 +67,11 @@ const DeveloperProfile = ({getProfileById, match: {params}, profile : {profile, 
                 </div>
             }
             <DeveloperAbout profile={profile}/>
+            <div className='exp-edu'>
+                {profile.experience && profile.experience.length > 0 && <DeveloperExperience profile={profile}/> }
+                {profile.education && profile.education.length > 
+                0 && <DeveloperEducation profile={profile}/>}
+            </div>
             {auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id && (<Link to='/edit-profile'>Edit Profile</Link>)}
         </div>
         
