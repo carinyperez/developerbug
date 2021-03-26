@@ -19,7 +19,7 @@ export const getCurrentProfile = () => async dispatch => {
         // otherwise will throw a 400 error 
         dispatch({
             type: ProfileActionTypes.PROFILE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
+            payload: { msg: err.response.statustext, status: err.response.statusText}
         })
     }
 }

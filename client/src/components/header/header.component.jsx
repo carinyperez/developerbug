@@ -15,6 +15,7 @@ const Header = (props) => {
             <div className='header'>
                 <Link to='/' className='title'>DeveloperBug</Link>
                 <Link to='/developers'>Developers</Link>
+                <Link to='/posts'>Posts</Link>
                 <Link to='/dashboard'>Dashboard</Link>
                 <Link onClick={() => logout()} to='/' >Logout</Link>
             </div>

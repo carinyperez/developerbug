@@ -18,6 +18,8 @@ import AddExperience from './components/add-experience/add-experience.component'
 import AddEducation from './components/add-education/add-education.component';
 import Developers from './components/developers/developers.component';
 import DeveloperProfile from './components/developerprofile/developerprofile';
+import Posts from './components/posts/posts.component';
+
 
 
 if(localStorage.token) {
@@ -46,6 +48,7 @@ const App = () =>  {
           <PrivateRoute exact path ='/edit-profile' component={EditProfile}/>
           <PrivateRoute exact path ='/add-experience' component={AddExperience}/>
           <PrivateRoute exact path ='/add-education' component={AddEducation}/>
+          <PrivateRoute exact path ='/posts' component={Posts}/>
         </Switch>
       </div>
     </Router>
