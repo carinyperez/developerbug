@@ -13,6 +13,9 @@ export const getCurrentProfile = () => async dispatch => {
             payload: res.data
         })
     } catch (err) {
+        dispatch({
+          type: ProfileActionTypes.CLEAR_PROFILE
+        })
         // otherwise will throw a 400 error 
         dispatch({
             type: ProfileActionTypes.PROFILE_ERROR,
@@ -78,17 +81,14 @@ export const getAllProfiles = () => async dispatch => {
 
 // Get profile by id 
 export const getProfileById = (user_id) => async dispatch => {
-  console.log(user_id); 
   try {
     const res = await axios.get(`/api/profile/user/${user_id}`);
-    console.log(res);
     dispatch({
       type: ProfileActionTypes.GET_PROFILE, 
       payload: res.data
     })
     dispatch(setAlert('Got profile', 'success'))
   } catch (err) {
-    console.error(err); 
     dispatch({
       type: ProfileActionTypes.PROFILE_ERROR, 
       payload: {msg: err.response.statusText, status: err.response.status}
@@ -99,15 +99,18 @@ export const getProfileById = (user_id) => async dispatch => {
 // get github repos 
 export const getGithubRepos = (username) => async dispatch =>  {
   try {
-    const res = await axios.get(`api/profile/github/${username}`); 
+    console.log(username); 
+    const res = await axios.get(`/api/profile/github/${username}`);
+    console.log(res); 
     dispatch({
       type: ProfileActionTypes.GET_REPOS, 
       payload: res.data
     })
     dispatch(setAlert('Got gihub repos', 'success')); 
   } catch (err) {
+    console.error(err);
     dispatch({
-      type: ProfileActionTypes.PROFILE_ERROR, 
+      // type: ProfileActionTypes.PROFILE_ERROR, 
       payload: {msg: err.response.statusText, status: err.response.status}
     }) 
   }

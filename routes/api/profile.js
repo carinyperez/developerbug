@@ -293,6 +293,7 @@ router.delete('/education/:edu_id',auth, async (req, res) => {
 // @ desc Get user repos from github
 // @ access Public 
 router.get('/github/:username', (req, res)=> {
+    console.log('github'); 
     try {
         const options = {
             // url is uniform resource identifier + protocol 
@@ -300,6 +301,7 @@ router.get('/github/:username', (req, res)=> {
             method: 'GET',
             headers: {'user-agent': 'node.js'}
         }
+        console.log(options);
         request(options, (error, response, body)=> {
             if(error) console.error(error); 
             if(response.statusCode !== 200) {

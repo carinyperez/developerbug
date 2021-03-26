@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect}  from 'react-redux';
-import { getProfileById } from '../../redux/reducers/profile/profile.actions';
+import { getProfileById} from '../../redux/reducers/profile/profile.actions';
 import PropTypes from 'prop-types'; 
 import Alert from '../alert/alert.component';
 import Spinner from '../spinner/spinner.component';
@@ -13,15 +13,18 @@ import linkedin1 from '../../assets/linkedin.png';
 import DeveloperAbout from '../developerabout/developerabout.component';
 import DeveloperExperience from '../developerexperience/developerexperience.component';
 import DeveloperEducation from '../developereducation/developereducation.component';
+import GithubRepos from '../githubrepos/githubrepos.component';
 import './developerprofile.styles.scss';
+
 
 
 const DeveloperProfile = ({getProfileById, match: {params}, profile : {profile, loading}, auth}) => {
     useEffect(() => {
         // get id from the url 
-       getProfileById(params.id); 
+       getProfileById(params.id);
     }, [getProfileById, params.id])
     // make sure profile is loaded 
+    
     return (
         loading ||  profile === null ? <Spinner/> : 
         <div className='developer-profile'>
@@ -30,7 +33,7 @@ const DeveloperProfile = ({getProfileById, match: {params}, profile : {profile, 
                 <img src={profile.user.avatar} alt='avatar' className='avatar'></img>
                 <p>{profile.user.name}</p>
                 <p>{profile.occupation}{profile.company &&<span> at {profile.company}</span>}</p>
-                <p>{profile.location && <p>{profile.location}</p>}</p>
+                <p>{profile.location && <span>{profile.location}</span>}</p>
             </div>
             {profile.social && 
                 <div className='social'>
@@ -72,6 +75,9 @@ const DeveloperProfile = ({getProfileById, match: {params}, profile : {profile, 
                 {profile.education && profile.education.length > 
                 0 && <DeveloperEducation profile={profile}/>}
             </div>
+            {
+                profile.githubusername && <GithubRepos username={profile.githubusername}/>
+            }
             {auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id && (<Link to='/edit-profile'>Edit Profile</Link>)}
         </div>
         
