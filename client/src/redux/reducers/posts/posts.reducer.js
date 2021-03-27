@@ -30,10 +30,20 @@ const postsReducer = (state = INITIAL_STATE, action) => {
         }
         case PostsActionTypes.UPDATE_LIKES:
         return {
-            ...state, 
-            post: action.payload,
-            loading: false
+            ...state,
+            loading: false,
+            // post: action.payload
+            posts: state.posts.map((post) =>
+            post._id === action.payload.id ? { ...post, likes: action.payload.likes } : post
+        ),
         }
+        case PostsActionTypes.DELETE_POST:
+        return {
+            ...state, 
+            loading: false, 
+            posts: state.posts.filter(post => post._id !== action.payload)
+            // posts: action.payload
+        }   
         default: {
             return state; 
         }

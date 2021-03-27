@@ -17,7 +17,7 @@ export const getPosts = () => async dispatch => {
         // console.log(err.response.statusText);
         dispatch({
             type: PostsActionTypes.POSTS_ERROR,
-            // payload: { msg: err.response.statusText, status: err.response.status }
+            payload: { msg: err.response.statusText, status: err.response.status }
           }); 
     }
 }
@@ -48,12 +48,58 @@ export const likePost = (post_id) => async dispatch =>  {
     try {
         const res = await axios.put(`/api/posts/like/${post_id}`); 
         console.log(res);
+        dispatch(setAlert('Post liked', 'success'))
+        dispatch({
+            type: PostsActionTypes.UPDATE_LIKES,
+            payload: { post_id, likes: res.data }
+        }) 
+    } catch (err) {
+        dispatch({
+            type: PostsActionTypes.POSTS_ERROR, 
+            payload: {msg: err.response.statusText,status:err.response.status }
+        })
+
+    }
+}
+
+//unlike a post 
+
+export const unlikePost = (post_id) => async dispatch =>  {
+    console.log('unlike post'); 
+    try {
+        const res = await axios.put(`/api/posts/unlike/${post_id}`); 
+        console.log(res);
+        dispatch(setAlert('Post unliked'))
         dispatch({
             type: PostsActionTypes.UPDATE_LIKES,
             payload: res.data
         }) 
     } catch (err) {
-        console.error(err.response); 
+        dispatch({
+            type: PostsActionTypes.POSTS_ERROR, 
+            payload: {msg: err.response.statusText,status:err.response.status }
+        })
 
     }
+}
+
+// delete post by id 
+export const deletePostById = (post_id) => async dispatch => {
+    console.log('delete post');
+    try {
+        const res = await axios.delete(`/api/posts/${post_id}`); 
+        console.log(res);
+        dispatch({
+            type: PostsActionTypes.DELETE_POST,
+            // payload: res.data
+            payload: post_id
+        }) 
+        dispatch(setAlert('Deleted post', 'success'))  
+    } catch (err) {
+        console.error(err); 
+        dispatch({
+            type: PostsActionTypes.POSTS_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        }) 
+    } 
 }
