@@ -19,6 +19,7 @@ import AddEducation from './components/add-education/add-education.component';
 import Developers from './components/developers/developers.component';
 import DeveloperProfile from './components/developerprofile/developerprofile';
 import Posts from './components/posts/posts.component';
+import PostDiscussion from './components/postdiscussion/postdiscussion.component';
 
 
 
@@ -49,6 +50,7 @@ const App = () =>  {
           <PrivateRoute exact path ='/add-experience' component={AddExperience}/>
           <PrivateRoute exact path ='/add-education' component={AddEducation}/>
           <PrivateRoute exact path ='/posts' component={Posts}/>
+          <PrivateRoute exact path = '/post/:id' component={PostDiscussion}></PrivateRoute>
         </Switch>
       </div>
     </Router>

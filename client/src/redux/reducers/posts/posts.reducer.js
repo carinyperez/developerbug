@@ -8,6 +8,7 @@ const INITIAL_STATE = {
 }
 
 const postsReducer = (state = INITIAL_STATE, action) => {
+    // console.log(action.payload); 
     switch(action.type) {
         case PostsActionTypes.GET_POSTS:  
         return {
@@ -19,6 +20,18 @@ const postsReducer = (state = INITIAL_STATE, action) => {
         return {
             ...state, 
             error: action.payload,
+            loading: false
+        }
+        case PostsActionTypes.GET_POST: 
+        return {
+            ...state, 
+            post: action.payload,
+            loading: false
+        }
+        case PostsActionTypes.UPDATE_LIKES:
+        return {
+            ...state, 
+            post: action.payload,
             loading: false
         }
         default: {
