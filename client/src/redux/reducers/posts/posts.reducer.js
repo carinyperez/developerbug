@@ -34,7 +34,7 @@ const postsReducer = (state = INITIAL_STATE, action) => {
             loading: false,
             // post: action.payload
             posts: state.posts.map((post) =>
-            post._id === action.payload.id ? { ...post, likes: action.payload.likes } : post
+            post._id === action.payload.post_id ? { ...post, likes: action.payload.likes } : post
         ),
         }
         case PostsActionTypes.DELETE_POST:
@@ -43,6 +43,12 @@ const postsReducer = (state = INITIAL_STATE, action) => {
             loading: false, 
             posts: state.posts.filter(post => post._id !== action.payload)
             // posts: action.payload
+        }
+        case PostsActionTypes.ADD_POST:
+        return {
+            ...state, 
+            loading: false, 
+            posts: [action.payload, ...state.posts]
         }   
         default: {
             return state; 

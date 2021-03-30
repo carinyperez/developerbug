@@ -1,0 +1,13 @@
+.post-form {
+  display: flex;
+  flex-direction: column;
+  textarea {
+    height: 200px;
+    width: 40vw;
+    margin-bottom: 20px;
+  }
+  button {
+    width: 40vw;
+    text-align: center;
+  }
+}

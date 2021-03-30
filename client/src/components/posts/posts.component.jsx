@@ -5,6 +5,8 @@ import { getPosts } from '../../redux/reducers/posts/posts.actions';
 import Spinner from '../spinner/spinner.component'; 
 import Alert from '../alert/alert.component';
 import Post from '../post/post.component';
+import PostForm from '../postform/postform.component';
+import './posts.styles.scss';
 
 const Posts = ({posts : {posts}, getPosts}) => {
     useEffect(() => {
@@ -12,11 +14,11 @@ const Posts = ({posts : {posts}, getPosts}) => {
     }, [getPosts])
         return (
             posts.loading ? <Spinner/> : 
-            <div>
+            <div className='posts'>
             <Alert/>
             <h1>Posts</h1>
             <h2>Welcome to the community</h2>
-            {/* Post form*/}
+            <PostForm/>
             {posts.map(item => <Post key={item._id} post={item}></Post>)}
             </div>
         )

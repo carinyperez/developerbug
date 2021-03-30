@@ -46,4 +46,14 @@
 
 // console.log('2021-03-26T23:29:26.949Z'.split('T')[0])
 
-console.log(Math.floor(Math.random() * 10)); 
+// console.log(Math.floor(Math.random() * 10)); 
+
+// console.log(JSON.parse(\"hello\"))
+
+payload: { post_id, likes: res.data }
+
+posts: state.posts.map((post) =>
+    post._id === action.payload.id ? { ...post, likes: action.payload.likes } : post
+
+
+    "60627532742d56ada7451243" === 

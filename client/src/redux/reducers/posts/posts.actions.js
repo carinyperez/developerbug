@@ -22,7 +22,7 @@ export const getPosts = () => async dispatch => {
     }
 }
 
-// Get Posts by Id 
+// Get post by Id 
 export const getPostById = (id) => async dispatch => {
     console.log('getPostById'); 
     try {
@@ -63,7 +63,6 @@ export const likePost = (post_id) => async dispatch =>  {
 }
 
 //unlike a post 
-
 export const unlikePost = (post_id) => async dispatch =>  {
     console.log('unlike post'); 
     try {
@@ -72,7 +71,7 @@ export const unlikePost = (post_id) => async dispatch =>  {
         dispatch(setAlert('Post unliked'))
         dispatch({
             type: PostsActionTypes.UPDATE_LIKES,
-            payload: res.data
+            payload: { post_id, likes: res.data }
         }) 
     } catch (err) {
         dispatch({
@@ -102,4 +101,29 @@ export const deletePostById = (post_id) => async dispatch => {
             payload: { msg: err.response.statusText, status: err.response.status }
         }) 
     } 
+}
+
+// create a post 
+export const createPost = (formData) => async dispatch => {
+    console.log('create post');
+    const config = {
+        headers:  {
+            'Content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.post('/api/posts', formData,config); 
+        console.log(res);
+        dispatch(setAlert('Create a post', 'Success'))
+        dispatch({
+            type: PostsActionTypes.ADD_POST, 
+            payload: res.data
+        }) 
+    } catch (err) {
+        console.error(err); 
+        dispatch({
+            type: PostsActionTypes.POSTS_ERROR,
+            payload: {msg: err.response.statusText, status: err.response.status}
+        })
+    }
 }

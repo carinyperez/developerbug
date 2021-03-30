@@ -28,7 +28,7 @@ const Post = ({post,auth, post : {_id, avatar, name, text, date, comments, likes
            <p>{text}</p>
            <p>Posted on <Moment format='MM/DD/YYYY'>{date.split('T')[0]}</Moment></p>
            {
-                post !== null &&
+                post !== null && 
                 <div>
                 <button className='like-button' onClick={handleLikeClick}><span>&#128077; Likes : <span>{likes.length > 0 && <span>{likes.length}</span>}
                 </span></span></button>
@@ -52,6 +52,12 @@ const Post = ({post,auth, post : {_id, avatar, name, text, date, comments, likes
 const mapStateToProps = state => ({
     auth: state.auth
 })
+
+// default props changed if the prop value passed
+// Post.defaultProps = {
+//     showActions: true
+// }
+
 
 Post.propTypes = {
     post: PropTypes.object.isRequired,
