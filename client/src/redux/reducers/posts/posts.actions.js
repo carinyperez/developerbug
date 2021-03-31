@@ -127,3 +127,47 @@ export const createPost = (formData) => async dispatch => {
         })
     }
 }
+
+// add a comment 
+export const addComment = (post_id, formData) => async dispatch => {
+    console.log('add comment');
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const res = await axios.post(`/api/posts/comment/${post_id}`,formData,config);
+        console.log(res);
+        dispatch(setAlert('Posted comment', 'success')) 
+        dispatch({
+            type: PostsActionTypes.ADD_COMMENT,
+            payload: res.data
+        })
+    } catch (err) {
+        console.error(err); 
+        dispatch({
+            type: PostsActionTypes.POSTS_ERROR,
+            payload: {msg: err.response.statusText, status: err.response.status}
+        })
+    }
+}
+
+// delete comment 
+export const deleteComment = (post_id,comment_id) => async dispatch => {
+    console.log('delete comment'); 
+    try {
+        const res = await axios.delete(`/api/posts/comment/${post_id}/${comment_id}`); 
+        dispatch(setAlert('Deleted comment', 'success')); 
+        dispatch({
+            type: PostsActionTypes.DELETE_COMMENT,
+            payload: comment_id
+        })
+    } catch (err) {
+        console.error(err);
+        dispatch({
+            type: PostsActionTypes.POSTS_ERROR,
+            payload: {msg: err.response.statusText, status: err.response.status}
+        }) 
+    }
+}

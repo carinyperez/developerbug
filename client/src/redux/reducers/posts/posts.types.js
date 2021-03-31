@@ -4,7 +4,9 @@ const PostsActionTypes = {
     GET_POST: 'GET_POST',
     UPDATE_LIKES: 'UPDATE_LIKES',
     DELETE_POST: 'DELETE_POST', 
-    ADD_POST: 'ADD_POST'
+    ADD_POST: 'ADD_POST',
+    ADD_COMMENT: 'ADD_COMMENT',
+    DELETE_COMMENT: 'DELETE_COMMENT'
 }
 
 export default PostsActionTypes; 
