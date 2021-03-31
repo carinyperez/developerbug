@@ -23,6 +23,10 @@ app.use('/api/posts', posts);
 app.use('/api/profile', profile);
 
 //Serve static assets in production 
+// built-in variable called NODE_ENV
+// NODE_ENV = development when run npm start 
+// NODE_ENV = test when run npm test 
+// NODE_ENV = production when run npm test 
 if(process.env.NODE_ENV === 'production') {
     //set static folder 
     app.use(express.static('client/build'));
