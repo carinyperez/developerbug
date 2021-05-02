@@ -35,7 +35,6 @@ export const createProfile = (formData, history, edit = false) => async (
       }
     }
     const res = await axios.post('api/profile', formData, config);
-    console.log(res); 
     dispatch({
       type: ProfileActionTypes.GET_PROFILE,
       payload: res.data
@@ -64,7 +63,6 @@ export const getAllProfiles = () => async dispatch => {
   // dispatch({type: ProfileActionTypes.CLEAR_PROFILE})
   try {
     const res = await axios.get('api/profile'); 
-    console.log(res); 
     dispatch({
       type: ProfileActionTypes.GET_PROFILES,
       payload: res.data
@@ -99,9 +97,7 @@ export const getProfileById = (user_id) => async dispatch => {
 // get github repos 
 export const getGithubRepos = (username) => async dispatch =>  {
   try {
-    console.log(username); 
     const res = await axios.get(`/api/profile/github/${username}`);
-    console.log(res); 
     dispatch({
       type: ProfileActionTypes.GET_REPOS, 
       payload: res.data
@@ -213,7 +209,6 @@ export const deleteEducation = (edu_id) =>  async dispatch => {
 // Delete account and clear profile 
 export const deleteAccount = (history) => async dispatch => {
   if(window.confirm('This will delete your account PERMANENTLY!')) {
-    console.log('delete account'); 
     try {
       await axios.delete('api/profile');
       dispatch({

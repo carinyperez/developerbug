@@ -7,8 +7,6 @@ const {check, validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken');
 require('dotenv').config(); 
 
-console.log(process.env.jwtSecret)
-
 // @route    GET api/auth
 // @desc     Get user by token
 // @access   Private

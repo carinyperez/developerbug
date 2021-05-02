@@ -18,8 +18,6 @@ const SignUp = ({setAlert, signup, isAuthenticated}) => {
     }); 
     const {name, email, password, password2} = formData; 
     const handleChange = (event) => {
-        // console.log(event.target.name); 
-        // console.log(event.target.value); 
         setFormData({...formData, [event.target.name]: event.target.value}); 
     }
     const handleSubmit = async (event) => {

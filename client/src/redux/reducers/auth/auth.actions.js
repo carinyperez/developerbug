@@ -50,10 +50,8 @@ export const signup = ({name, email, password}) => async dispatch => {
 // login user
 export const login = (email, password) => async dispatch => {
     const body = { email, password };
-  
     try {
       const res = await axios.post('api/auth', body);
-      console.log(res);
       dispatch({
         type: AuthActionTypes.LOGIN_SUCCESS,
         payload: res.data

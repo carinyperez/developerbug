@@ -13,8 +13,6 @@ export const getPosts = () => async dispatch => {
             payload: res.data
         })    
     } catch (err) {
-        // console.log(err.response); 
-        // console.log(err.response.statusText);
         dispatch({
             type: PostsActionTypes.POSTS_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }
@@ -24,7 +22,6 @@ export const getPosts = () => async dispatch => {
 
 // Get post by Id 
 export const getPostById = (id) => async dispatch => {
-    console.log('getPostById'); 
     try {
         const res = await axios.get(`/api/posts/${id}`); 
         dispatch(setAlert('Got post', 'success'))
@@ -32,7 +29,6 @@ export const getPostById = (id) => async dispatch => {
             type: PostsActionTypes.GET_POST, 
             payload: res.data
         })
-        console.log(res); 
     } catch (err) {
         console.error(err);
         dispatch({
@@ -44,10 +40,8 @@ export const getPostById = (id) => async dispatch => {
 
 // Like a post 
 export const likePost = (post_id) => async dispatch =>  {
-    console.log('like post'); 
     try {
         const res = await axios.put(`/api/posts/like/${post_id}`); 
-        console.log(res);
         dispatch(setAlert('Post liked', 'success'))
         dispatch({
             type: PostsActionTypes.UPDATE_LIKES,
@@ -61,13 +55,10 @@ export const likePost = (post_id) => async dispatch =>  {
 
     }
 }
-
 //unlike a post 
 export const unlikePost = (post_id) => async dispatch =>  {
-    console.log('unlike post'); 
     try {
         const res = await axios.put(`/api/posts/unlike/${post_id}`); 
-        console.log(res);
         dispatch(setAlert('Post unliked'))
         dispatch({
             type: PostsActionTypes.UPDATE_LIKES,
@@ -81,13 +72,10 @@ export const unlikePost = (post_id) => async dispatch =>  {
 
     }
 }
-
 // delete post by id 
 export const deletePostById = (post_id) => async dispatch => {
-    console.log('delete post');
     try {
         const res = await axios.delete(`/api/posts/${post_id}`); 
-        console.log(res);
         dispatch({
             type: PostsActionTypes.DELETE_POST,
             // payload: res.data
@@ -105,7 +93,6 @@ export const deletePostById = (post_id) => async dispatch => {
 
 // create a post 
 export const createPost = (formData) => async dispatch => {
-    console.log('create post');
     const config = {
         headers:  {
             'Content-Type': 'application/json'
@@ -113,7 +100,6 @@ export const createPost = (formData) => async dispatch => {
     }
     try {
         const res = await axios.post('/api/posts', formData,config); 
-        console.log(res);
         dispatch(setAlert('Create a post', 'Success'))
         dispatch({
             type: PostsActionTypes.ADD_POST, 
@@ -130,7 +116,6 @@ export const createPost = (formData) => async dispatch => {
 
 // add a comment 
 export const addComment = (post_id, formData) => async dispatch => {
-    console.log('add comment');
     try {
         const config = {
             headers: {
@@ -138,7 +123,6 @@ export const addComment = (post_id, formData) => async dispatch => {
             }
         }
         const res = await axios.post(`/api/posts/comment/${post_id}`,formData,config);
-        console.log(res);
         dispatch(setAlert('Posted comment', 'success')) 
         dispatch({
             type: PostsActionTypes.ADD_COMMENT,
@@ -155,7 +139,6 @@ export const addComment = (post_id, formData) => async dispatch => {
 
 // delete comment 
 export const deleteComment = (post_id,comment_id) => async dispatch => {
-    console.log('delete comment'); 
     try {
         const res = await axios.delete(`/api/posts/comment/${post_id}/${comment_id}`); 
         dispatch(setAlert('Deleted comment', 'success')); 

@@ -23,7 +23,6 @@ router.post('/',
     }
     try {
         const user = await User.findById(req.user.id).select('-password');
-        console.log(user);   
         const newPost  = new Post({
             text: req.body.text, 
             name: user.name, 
@@ -31,7 +30,6 @@ router.post('/',
             user: req.user.id
         });
         const post = await newPost.save(); 
-        console.log(post);
         res.json(post); 
     } catch (err) {
         console.error(err.message); 
@@ -175,9 +173,7 @@ router.post('/comment/:id',
     }
     try {
         const user = await User.findById(req.user.id).select('-password');
-        console.log(user);
         const post = await Post.findById(req.params.id);
-        console.log(post); 
         const newComment = ({
             text: req.body.text,
             name: user.name, 

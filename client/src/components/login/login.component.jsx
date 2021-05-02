@@ -14,13 +14,10 @@ const Login = ({login, isAuthenticated}) => {
     }); 
     const {email, password} = formData; 
     const handleChange = (event) => {
-        // console.log(event.target.name); 
-        // console.log(event.target.value); 
         setFormData({...formData, [event.target.name]: event.target.value}); 
     }
     // registers the user in mongoDB using state 
     const handleSubmit = async (event) => {
-        console.log('login'); 
         event.preventDefault(); 
         login(email, password); 
     }

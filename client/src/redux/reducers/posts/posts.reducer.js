@@ -6,9 +6,7 @@ const INITIAL_STATE = {
     loading: true, 
     error: {}
 }
-
 const postsReducer = (state = INITIAL_STATE, action) => {
-    // console.log(action.payload); 
     switch(action.type) {
         case PostsActionTypes.GET_POSTS:  
         return {

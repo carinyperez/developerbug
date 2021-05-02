@@ -96,9 +96,7 @@ router.post(
             // Create 
             profile = new Profile(profileFields); 
             await profile.save();
-            console.log('profile saved'); 
             res.json(profile); 
-
         } catch(err) {
             console.error(err.message); 
             res.status(500).send('Server error'); 
@@ -173,7 +171,6 @@ router.put('/experience', [auth, [
     check('from', 'From date is required').not().isEmpty(),
     ]],
     async(req, res) => {
-        console.log('Experience route'); 
         const errors = validationResult(req); 
         if (!errors.isEmpty()) {
             return res.status(400).json({errors: errors.array})
@@ -218,10 +215,6 @@ router.delete('/experience/:exp_id',auth, async (req, res) => {
         profile.experience = profile.experience.filter(
             item => item._id.toString() !== req.params.exp_id
         )
-        // 
-        // console.log(req.params.exp_id);
-        // console.log(removeIndex);
-        // profile.experience.splice(removeIndex, 1);
         await profile.save(); 
         res.json(profile); 
         
@@ -293,7 +286,6 @@ router.delete('/education/:edu_id',auth, async (req, res) => {
 // @ desc Get user repos from github
 // @ access Public 
 router.get('/github/:username', (req, res)=> {
-    console.log('github'); 
     try {
         const options = {
             // url is uniform resource identifier + protocol 
@@ -301,7 +293,6 @@ router.get('/github/:username', (req, res)=> {
             method: 'GET',
             headers: {'user-agent': 'node.js'}
         }
-        console.log(options);
         request(options, (error, response, body)=> {
             if(error) console.error(error); 
             if(response.statusCode !== 200) {

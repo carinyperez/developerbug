@@ -23,7 +23,6 @@ const PostDiscussion = ({match, getPostById,addComment, posts, posts: {post, loa
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({text});
         addComment(match.params.id,{text});  
     }
     return (

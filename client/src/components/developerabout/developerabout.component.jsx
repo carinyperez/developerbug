@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './developerabout.styles.scss'; 
 
 const DeveloperAbout = ({profile}) => {
-    // console.log(profile && <p>hello</p>); 
     return (
         <div className='developer-about'>
             {profile.bio && 

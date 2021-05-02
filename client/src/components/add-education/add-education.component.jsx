@@ -33,8 +33,6 @@ const AddEducation = ({history, addEducation}) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault(); 
-        // console.log(formData);
-        // console.log(addExperience(formData, history)); 
         addEducation(formData, history); 
     }
     return (

@@ -75,7 +75,6 @@ const EditProfile = ({profile : {profile, loading}, createProfile,getCurrentProf
     // onSubmit send form data to api/profile
     const handleSubmit = e => {
         e.preventDefault(); 
-        console.log(formData); 
         createProfile(formData, history);
 
     }
@@ -139,17 +138,6 @@ const EditProfile = ({profile : {profile, loading}, createProfile,getCurrentProf
                     }}
                     >Add Social Media Links</button>
                     <p>Optional</p>
-                    {/*
-                        // inline if and && operator 
-                        // true && expression evaluates to true 
-                        // false && expression evaluates to false
-
-                        let two = 1 + 1; // js expression 
-
-                        console.log(true && two); // two 
-                        console.log(false && two); // false 
-                    */}
-                    
                     {selected && <div className='social-media'>
                         <img src={twitter1} alt='twitter'></img>
                         <input type='text' placeholder='Twitter URL'
