@@ -31,6 +31,7 @@ const DeveloperProfile = ({getProfileById, match: {params}, profile : {profile, 
             <Alert/>
             <div className='developer-header'>
                 <img src={profile.user.avatar} alt='avatar' className='avatar'></img>
+                <p>{auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id && (<Link to='/edit-profile'>Edit Profile</Link>)}</p>
                 <p>{profile.user.name}</p>
                 <p>{profile.occupation}{profile.company &&<span> at {profile.company}</span>}</p>
                 <p>{profile.location && <span>{profile.location}</span>}</p>
@@ -70,15 +71,14 @@ const DeveloperProfile = ({getProfileById, match: {params}, profile : {profile, 
                 </div>
             }
             <DeveloperAbout profile={profile}/>
-            <div className='exp-edu'>
+            {/* <div className='exp-edu'>
                 {profile.experience && profile.experience.length > 0 && <DeveloperExperience profile={profile}/> }
                 {profile.education && profile.education.length > 
                 0 && <DeveloperEducation profile={profile}/>}
-            </div>
+            </div> */}
             {
                 profile.githubusername && <GithubRepos username={profile.githubusername}/>
             }
-            {auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id && (<Link to='/edit-profile'>Edit Profile</Link>)}
         </div>
         
     )

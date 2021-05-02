@@ -26,7 +26,7 @@ const Dashboard = ({getCurrentProfile, auth, profile, deleteAccount, history}) =
         <div className='dashboard-container'>
             {/* If user exists display name*/}
             <h1>
-                Welcome {auth.user && capitalize(auth.user.name)}
+                Welcome, {auth.user && capitalize(auth.user.name)}
             </h1>
             {profile.profile !== null ? (
                 <div className='dashboard-divs'>

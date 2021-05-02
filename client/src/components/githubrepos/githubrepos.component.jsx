@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'; 
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
+import './githubrepos.styles.scss';
 import { getGithubRepos } from '../../redux/reducers/profile/profile.actions';
 import Spinner from '../spinner/spinner.component';
 import {connect} from 'react-redux'; 
@@ -20,22 +21,22 @@ class GithubRepos extends React.Component {
     render() {
         const {repos} = this.props; 
         return (
-            <div>
+            <div className='github-container'>
                 {
                     repos === null ? <Spinner/> : 
                     <div>
-                    <h2>Github Repos</h2>
-                    <p>{repos.map(item =>
-                        <div key={item._id}>
+                    <h1>Github Repos</h1>
+                    {repos.map(item =>
+                        <div key={item._id} className='github-repos'>
                             <a href={item.html_url} target='_blank' rel='noopener noreferrer'>{item.name}</a>
-                            <p>{item.description}</p>
+                            <p className='description'>{item.description}</p>
                             <p> Stars: {item.stargazers_count + 10}</p>
                             <p> Watchers: {item.watchers+ 5}</p>
                             <p>Forks: {item.forks+ 7}</p>
                         </div> 
                         
                         
-                    )}</p>
+                    )}
                     </div> 
                 }
             </div>  

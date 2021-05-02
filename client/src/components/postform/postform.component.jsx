@@ -26,6 +26,7 @@ export const PostForm = ({createPost}) => {
                 value={text}
                 onChange={handleChange}
                 > Create a post</textarea>
+                <br/>
                 <input type='submit'/>
             </form>
         </div>

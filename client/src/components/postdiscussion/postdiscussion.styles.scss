@@ -1,8 +1,14 @@
 .post-discussion {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   textarea {
     width: 25vw;
+  }
+
+  input {
+    margin: 1rem;
   }
 }

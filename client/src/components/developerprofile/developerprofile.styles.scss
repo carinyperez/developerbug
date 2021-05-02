@@ -1,6 +1,5 @@
 .developer-profile {
   height: 100vh;
-  overflow: scroll;
   text-align: center;
   .developer-header {
     text-align: center;
@@ -14,9 +13,5 @@
       padding-right: 30px;
       margin-bottom: 20px;
     }
-  }
-  .exp-edu {
-    display: flex; 
-    flex-direction: row;
   }
 }
