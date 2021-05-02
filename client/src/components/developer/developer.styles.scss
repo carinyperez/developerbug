@@ -1,0 +1,25 @@
+.developer {
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    > * {
+        margin: 5px;
+    }
+    ul {
+        display: flex;
+        margin: -5px;
+        padding: 10px;
+        li {
+            list-style: none;
+            background-color: white;
+            color: blue;
+            flex: 1;
+        }
+    }
+
+}
+
+
+
+

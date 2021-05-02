@@ -12,7 +12,9 @@ const Developer = ({profile, user}) => {
         <p>{profile.location}</p>
         {
             profile.skills.slice(0,3).map((skill, index) => (
-                <li key={index}>{skill}</li>
+                <ul>
+                    <li key={index}>{skill}</li>
+                </ul>   
             ))
         }
         <br/>

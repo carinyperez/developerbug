@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import './list-education.styles.scss'; 
 import { deleteEducation } from '../../redux/reducers/profile/profile.actions';
 import {connect} from 'react-redux'; 
 

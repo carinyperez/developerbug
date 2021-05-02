@@ -7,8 +7,6 @@ import PropTypes from 'prop-types';
 import Spinner from '../spinner/spinner.component'; 
 import './developers.styles.scss'; 
 
-
-
 const Developers = ({getAllProfiles, profile: {profiles, loading}}) => {
     // if array if empty it will only run once 
     useEffect(() => {
@@ -17,7 +15,7 @@ const Developers = ({getAllProfiles, profile: {profiles, loading}}) => {
     return (
         <div>
         {loading ? <Spinner/> :
-        <div>
+        <div className='developer-container'>
             <div className='developer-header'>
             <h1>Developers</h1>
             <Alert className='alert'/>
@@ -26,8 +24,7 @@ const Developers = ({getAllProfiles, profile: {profiles, loading}}) => {
             <div className='developers'>
             {
                 profiles.length > 0 ? (profiles.map(profile => <Developer profile={profile} user={profile.user} key={profile._id} className='developer'/>)) : <h4>No profiles found ...</h4>
-            } 
-                        
+            }          
             </div>
         </div>
         }
