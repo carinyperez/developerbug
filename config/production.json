@@ -1,8 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://cariny123456:cariny123456@cluster0.zzxhq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", 
-    "jwtSecret": "mysecrettoken",
-    "githubClientId": "29c98a9afbf9c2927b74",
-    "githubClientSecret": "473aa5fe8c4945fbac1a64125bb1bf629f4f2c32"
-}
-
-

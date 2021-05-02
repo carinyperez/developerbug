@@ -20,6 +20,7 @@ const Login = ({login, isAuthenticated}) => {
     }
     // registers the user in mongoDB using state 
     const handleSubmit = async (event) => {
+        console.log('login'); 
         event.preventDefault(); 
         login(email, password); 
     }

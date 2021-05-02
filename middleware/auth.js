@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const config = require('config');
+require('dotenv').config();
 
 // middleware functions have access to the req, res and next functions, when done will call next function with next() 
 // this middleware 
@@ -12,7 +12,7 @@ const auth = (req, res, next) =>  {
     }
     // verify token 
     try {
-        const decoded = jwt.verify(token, config.get('jwtSecret')); 
+        const decoded = jwt.verify(token, process.env.jwtSecret)
         req.user = decoded.user; 
         next(); 
     } catch(err) {

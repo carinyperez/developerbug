@@ -5,7 +5,9 @@ const auth  = require('../../middleware/auth');
 const User = require('../../models/User');
 const {check, validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken');
-const config = require('config'); 
+require('dotenv').config(); 
+
+console.log(process.env.jwtSecret)
 
 // @route    GET api/auth
 // @desc     Get user by token
@@ -60,10 +62,11 @@ router.post('/',
                     id: user.id
                 }
             }
+            
             // returns a token with a jwt header, payload and signature that authenticates user requests 
             jwt.sign(
                 payload, 
-                config.get('jwtSecret'),
+                process.env.jwtSecret,
                 // change to 3600(1 hour) in production
                 {expiresIn: 360000}, 
                 (err, token) => {
