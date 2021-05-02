@@ -1,37 +1,23 @@
 .homepage {
-  display: flex;
-  // flex-wrap: wrap;
-  width: 100vw;
-  height: 100vh;
-
-  .header {
-    margin: 100px;
+  height: 100vh; 
+  text-align: center;
+  margin: 1rem;
+  .images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    img {
+      height: 15vw;
+    }
     h2 {
       color: white;
-      margin: auto;
-      font-size: 24px;
-      line-height: 200%;
-      margin: 20px;
-      width: 20vw;
     }
   }
-
-  .images {
-    width: 80vw;
-    margin: 100px;
+  .footer {
     img {
-      width: 10vw;
-      border-radius: 10px;
-      margin: auto;
-    }
-    .break {
-      flex-basis: 100%;
-    }
-    .owl {
-      width: 30vw;
+      height: 50vh;
     }
   }
-  .break {
-    flex-basis: 100%;
-  }
+  
 }
+

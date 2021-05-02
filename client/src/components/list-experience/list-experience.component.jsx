@@ -7,29 +7,34 @@ import PropTypes from 'prop-types';
 const ListExperience = ({experience, deleteExperience}) => {
     return (
         <div className='list-experience'>
-            <h1>Experience Credentials</h1>
+            <h2>Experience Credentials</h2>
             <div className='table-container'>
-                <table className='table'>
-                        <div className='table-headers'>
-                            <span>Company</span>
-                            <span>Title</span>
-                            <span>Years</span> 
-                        </div> 
-                    <tr className='table-body'>
-                        {experience.map(item => (
-                            <p key={item._id}>
+                <table class='styled-table'>
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Title</th>
+                            <th>Years</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {experience.map(item => (
+                    <tr key={item._id}>
                                 <td>{item.company}</td>
                                 <td>{item.title}</td>
                                 <td>{item.from.split('T')[0]} - {'Now'}
-                                <button key={item._id} onClick={() => deleteExperience('001')}>Delete</button>
                                 </td>
-                            </p>
-                            )
-                        )}
-                    </tr>        
-                </table>
+                                <td>
+                                <button key={item._id} onClick={() => deleteExperience(item._id)}>Delete</button>
+                                </td>
+                    </tr>
+                    )
+                    )} 
+                    
+                    </tbody>
+                </table>            
             </div>   
-
         </div>
     ) 
 }  

@@ -1,5 +1,4 @@
 import React from 'react'
-import './list-education.styles.scss'; 
 import PropTypes from 'prop-types';
 import { deleteEducation } from '../../redux/reducers/profile/profile.actions';
 import {connect} from 'react-redux'; 
@@ -7,29 +6,33 @@ import {connect} from 'react-redux';
 const ListEducation= ({education, deleteEducation}) => {
     return (
         <div className='list-education'>
-            <h1>Education Credentials</h1>
+            <h2>Education Credentials</h2>
             <div className='table-container'>
-                <table className='table'>
-                        <div className='table-headers'>
-                            <span>School</span>
-                            <span>Degree</span>
-                            <span>Years</span> 
-                        </div> 
-                    <tr className='table-body'>
-                        {education.map(item => (
-                            <p key={item._id}>
+                <table class='styled-table'>
+                    <thead>
+                        <tr>
+                            <th>School</th>
+                            <th>Degree</th>
+                            <th>Years</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {education.map(item => (
+                    <tr key={item._id}>
                                 <td>{item.school}</td>
                                 <td>{item.degree}</td>
                                 <td>{item.from.split('T')[0]} - {'Now'}
-                                <button onClick={() => deleteEducation(item._id)}>Delete</button>
                                 </td>
-                            </p>
-                            )
-                        )}
-                    </tr>        
-                </table>
+                                <td>
+                                <button key={item._id} onClick={() => deleteEducation(item._id)}>Delete</button>
+                                </td>
+                    </tr>
+                    )
+                    )} 
+                    </tbody>
+                </table> 
             </div>   
-
         </div>
     ) 
 }  

@@ -17,26 +17,30 @@ const Dashboard = ({getCurrentProfile, auth, profile, deleteAccount, history}) =
     useEffect(() => {
         getCurrentProfile(); 
     }, [getCurrentProfile])
+    const capitalize = (str) =>  {
+        return str.charAt(0).toUpperCase() + str.slice(1)
+    }
+    
     return (
          profile.loading && profile.profile == null ? <Spinner/> : 
         <div className='dashboard-container'>
             {/* If user exists display name*/}
-            <p>
-                Welcome {auth.user && auth.user.name}
-            </p>
+            <h1>
+                Welcome {auth.user && capitalize(auth.user.name)}
+            </h1>
             {profile.profile !== null ? (
-                <div>
+                <div className='dashboard-divs'>
                 <div className='dashboard-links'>
                     <Link to='edit-profile'> Edit Profile</Link>
                     <Link to='add-experience'> Add Experience</Link>
                     <Link to='add-education'> Add Education</Link>
+                    <button className='delete' onClick={() => deleteAccount(history)}>Delete my Account</button>
                 </div>
                 <Alert className='alert'/>
                 <div className='list-experience'>
                     <ListExperience experience = {profile.profile.experience}/>
                     <ListEducation education = {profile.profile.education}/>
                 </div>
-                <button className='delete' onClick={() => deleteAccount(history)}>Delete my Account</button>
                 </div> 
             ) : (
                 <div>
